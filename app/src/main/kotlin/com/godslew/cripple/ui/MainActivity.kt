@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
 import com.godslew.cripple.R
+import com.godslew.cripple.ui.tweet.TweetActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,9 +27,8 @@ class MainActivity : AppCompatActivity() {
     setSupportActionBar(toolbar)
 
     val fab: FloatingActionButton = findViewById(R.id.fab)
-    fab.setOnClickListener { view ->
-      Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-        .setAction("Action", null).show()
+    fab.setOnClickListener {
+      startActivity(TweetActivity.createIntent(this))
     }
     val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
     val navView: NavigationView = findViewById(R.id.nav_view)
