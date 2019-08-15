@@ -13,7 +13,6 @@
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
     <activity android:name=".ui.tweet.TweetActivity"
-      android:label="つぶやく"
       android:theme="@style/Theme.AppCompat.Light.NoActionBar">
     </activity>
     <activity

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.godslew.cripple.R
 
+
 class TweetFragment : Fragment() {
 
   companion object {
