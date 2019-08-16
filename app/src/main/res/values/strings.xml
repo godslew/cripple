@@ -16,4 +16,6 @@
     <string name="tweet">つぶやく</string>
     <string name="close">閉じる</string>
     <string name="text_what_are_you_doing">今どうしてる？</string>
+    <string name="menu_profile">プロフィール</string>
+    <string name="menu_list">リスト</string>
 </resources>
