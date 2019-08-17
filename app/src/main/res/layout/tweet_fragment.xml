@@ -41,7 +41,8 @@
         android:layout_weight="1"
         android:background="@android:color/transparent"
         android:text="@string/tweet"
-        android:textColor="@android:color/white"
+        android:textColor="@drawable/selector_button_tweet"
+        android:textStyle="bold"
         android:visibility="visible" />
 
     </LinearLayout>
