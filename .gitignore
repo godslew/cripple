@@ -75,3 +75,5 @@ fastlane/readme.md
 \.idea/runConfigurations\.xml
 
 \.idea/vcs\.xml
+
+app/src/main/res/values/twitter\.xml
