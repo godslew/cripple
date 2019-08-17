@@ -22,8 +22,7 @@
       android:background="@color/colorPrimary"
       android:fitsSystemWindows="true"
       app:headerLayout="@layout/nav_header_main"
-      app:itemTextColor="@android:color/white"
-      app:menu="@menu/activity_main_drawer">
+      app:itemTextColor="@android:color/white">
 
     </com.google.android.material.navigation.NavigationView>
 

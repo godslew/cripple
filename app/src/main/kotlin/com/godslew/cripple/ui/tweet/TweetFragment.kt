@@ -21,7 +21,7 @@ class TweetFragment : Fragment() {
     inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View {
-    return inflater.inflate(R.layout.tweet_fragment, container, false)
+    return inflater.inflate(R.layout.fragment_tweet, container, false)
   }
 
   override fun onActivityCreated(savedInstanceState: Bundle?) {
