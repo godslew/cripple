@@ -1,19 +1,16 @@
 package com.godslew.cripple.ui
 
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.material.navigation.NavigationView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import android.view.Menu
 import com.godslew.cripple.R
 import com.godslew.cripple.ui.tweet.TweetActivity
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,8 +19,6 @@ class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
-    val toolbar: Toolbar = findViewById(R.id.toolbar)
-    setSupportActionBar(toolbar)
 
     val fab: FloatingActionButton = findViewById(R.id.fab)
     fab.setOnClickListener {
@@ -44,14 +39,7 @@ class MainActivity : AppCompatActivity() {
         R.id.nav_send
       ), drawerLayout
     )
-    setupActionBarWithNavController(navController, appBarConfiguration)
     navView.setupWithNavController(navController)
-  }
-
-  override fun onCreateOptionsMenu(menu: Menu): Boolean {
-    // Inflate the menu; this adds items to the action bar if it is present.
-    menuInflater.inflate(R.menu.main, menu)
-    return true
   }
 
   override fun onSupportNavigateUp(): Boolean {
