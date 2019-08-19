@@ -68,4 +68,7 @@ dependencies {
     implementation "com.google.dagger:dagger:2.24"
     kapt "com.google.dagger:dagger-compiler:2.24"
     compileOnly "javax.annotation:jsr250-api:1.0"
+
+    // redux
+    implementation 'com.freeletics.rxredux:rxredux:1.0.1'
 }

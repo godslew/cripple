@@ -3,14 +3,10 @@ package com.godslew.cripple.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupWithNavController
 import com.godslew.cripple.R
 import com.godslew.cripple.ui.tweet.TweetActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,7 +21,6 @@ class MainActivity : AppCompatActivity() {
       startActivity(TweetActivity.createIntent(this))
     }
     val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-    val navView: NavigationView = findViewById(R.id.nav_view)
     // Passing each menu ID as a set of Ids because each
     // menu should be considered as top level destinations.
     appBarConfiguration = AppBarConfiguration(
