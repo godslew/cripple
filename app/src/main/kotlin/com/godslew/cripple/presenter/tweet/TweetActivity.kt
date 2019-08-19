@@ -1,4 +1,4 @@
-package com.godslew.cripple.ui.tweet
+package com.godslew.cripple.presenter.tweet
 
 import android.content.Context
 import android.content.Intent

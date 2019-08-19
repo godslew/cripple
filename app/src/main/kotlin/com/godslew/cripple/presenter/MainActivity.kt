@@ -1,11 +1,11 @@
-package com.godslew.cripple.ui
+package com.godslew.cripple.presenter
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.ui.AppBarConfiguration
 import com.godslew.cripple.R
-import com.godslew.cripple.ui.tweet.TweetActivity
+import com.godslew.cripple.presenter.tweet.TweetActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {

@@ -5,7 +5,7 @@
   android:id="@+id/tweet"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context=".ui.tweet.TweetFragment">
+  tools:context=".presenter.tweet.TweetFragment">
 
   <LinearLayout
     android:layout_width="match_parent"
