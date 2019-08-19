@@ -1,4 +1,4 @@
-package com.godslew.cripple.presenter
+package com.godslew.cripple.presenter.timeline
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -8,7 +8,7 @@ import com.godslew.cripple.R
 import com.godslew.cripple.presenter.tweet.TweetActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class MainActivity : AppCompatActivity() {
+class TimelineActivity : AppCompatActivity() {
 
   private lateinit var appBarConfiguration: AppBarConfiguration
 
