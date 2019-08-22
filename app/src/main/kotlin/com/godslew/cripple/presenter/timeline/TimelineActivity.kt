@@ -8,7 +8,9 @@ import com.godslew.cripple.R
 import com.godslew.cripple.presenter.tweet.TweetActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class TimelineActivity : AppCompatActivity() {
+class TimelineActivity : AppCompatActivity(), AddTimelineTabListDialogFragment.Listener {
+  override fun onAddTimelineTabClicked(position: Int) {
+  }
 
   private lateinit var appBarConfiguration: AppBarConfiguration
 
@@ -33,5 +35,6 @@ class TimelineActivity : AppCompatActivity() {
         R.id.nav_send
       ), drawerLayout
     )
+    //AddTimelineTabListDialogFragment.newInstance(30).show(supportFragmentManager, "dialog")
   }
 }

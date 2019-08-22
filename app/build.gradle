@@ -27,6 +27,7 @@ android {
     }
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
+        main.kotlin.srcDirs += 'src/main/kotlin'
     }
     compileOptions {
         sourceCompatibility = 1.8
@@ -48,6 +49,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.0.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.0.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -62,7 +64,15 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxkotlin:2.3.0"
 
     // twitter
-    implementation group: 'org.twitter4j', name: 'twitter4j', version: '4.0.7', ext: 'pom'
+    // https://mvnrepository.com/artifact/org.twitter4j/twitter4j-core
+    implementation group: 'org.twitter4j', name: 'twitter4j-core', version: '4.0.7'
+    // https://mvnrepository.com/artifact/org.twitter4j/twitter4j-stream
+    implementation group: 'org.twitter4j', name: 'twitter4j-stream', version: '4.0.7'
+    // https://mvnrepository.com/artifact/org.twitter4j/twitter4j-async
+    implementation group: 'org.twitter4j', name: 'twitter4j-async', version: '4.0.7'
+    // https://mvnrepository.com/artifact/org.twitter4j/twitter4j-media-support
+    implementation group: 'org.twitter4j', name: 'twitter4j-media-support', version: '4.0.6'
+
 
     // dagger
     implementation "com.google.dagger:dagger:2.24"
