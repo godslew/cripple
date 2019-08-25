@@ -67,16 +67,17 @@
           android:id="@+id/text_tweet"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
+          android:layout_marginEnd="40dp"
           android:layout_weight="1"
           android:background="@android:color/transparent"
           android:ems="10"
           android:gravity="start|top"
-          android:layout_marginEnd="40dp"
           android:hint="@string/text_what_are_you_doing"
+          android:importantForAutofill="no"
           android:inputType="textMultiLine"
+          android:maxLength="140"
           android:textColor="@android:color/white"
-          android:textColorHint="@android:color/white"
-          android:importantForAutofill="no">
+          android:textColorHint="@android:color/white">
 
           <requestFocus />
         </EditText>

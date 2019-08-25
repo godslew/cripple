@@ -16,6 +16,7 @@ import com.godslew.cripple.databinding.FragmentTweetBinding
 class TweetFragment : Fragment() {
 
   companion object {
+    private const val MaxInputTextLength = 140
     fun newInstance() = TweetFragment()
   }
 
