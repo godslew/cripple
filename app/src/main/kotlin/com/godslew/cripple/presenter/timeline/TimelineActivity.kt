@@ -2,27 +2,31 @@ package com.godslew.cripple.presenter.timeline
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.drawerlayout.widget.DrawerLayout
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.ui.AppBarConfiguration
 import com.godslew.cripple.R
+import com.godslew.cripple.databinding.ActivityMainBinding
 import com.godslew.cripple.presenter.tweet.TweetActivity
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class TimelineActivity : AppCompatActivity(), AddTimelineTabListDialogFragment.Listener {
   override fun onAddTimelineTabClicked(position: Int) {
   }
 
   private lateinit var appBarConfiguration: AppBarConfiguration
+  private lateinit var binding: ActivityMainBinding
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
+    if (savedInstanceState == null) {
+      supportFragmentManager.beginTransaction()
+        .replace(R.id.container, TimelineFragment.newInstance())
+        .commitNow()
+    }
+    binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-    val fab: FloatingActionButton = findViewById(R.id.fab)
-    fab.setOnClickListener {
+    binding.appBar.fab.setOnClickListener {
       startActivity(TweetActivity.createIntent(this))
     }
-    val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
     // Passing each menu ID as a set of Ids because each
     // menu should be considered as top level destinations.
     appBarConfiguration = AppBarConfiguration(
@@ -33,7 +37,7 @@ class TimelineActivity : AppCompatActivity(), AddTimelineTabListDialogFragment.L
         R.id.nav_tools,
         R.id.nav_share,
         R.id.nav_send
-      ), drawerLayout
+      ), binding.drawerLayout
     )
     //AddTimelineTabListDialogFragment.newInstance(30).show(supportFragmentManager, "dialog")
   }
