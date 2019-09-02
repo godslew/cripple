@@ -7,7 +7,7 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.1"
+    buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.godslew.cripple"
         minSdkVersion 22
@@ -81,4 +81,8 @@ dependencies {
 
     // redux
     implementation 'com.freeletics.rxredux:rxredux:1.0.1'
+
+    // view
+    implementation "com.xwray:groupie:2.5.1"
+    implementation "com.xwray:groupie-databinding:2.5.1"
 }
