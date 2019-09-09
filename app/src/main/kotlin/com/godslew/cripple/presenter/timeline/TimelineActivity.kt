@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.ui.AppBarConfiguration
 import com.godslew.cripple.R
+import com.godslew.cripple.application.Cripple
 import com.godslew.cripple.databinding.ActivityMainBinding
+import com.godslew.cripple.domain.usecase.LoginUseCase
 import com.godslew.cripple.presenter.tweet.TweetActivity
+import javax.inject.Inject
 
 class TimelineActivity : AppCompatActivity(), AddTimelineTabListDialogFragment.Listener {
   override fun onAddTimelineTabClicked(position: Int) {
@@ -14,9 +17,12 @@ class TimelineActivity : AppCompatActivity(), AddTimelineTabListDialogFragment.L
 
   private lateinit var appBarConfiguration: AppBarConfiguration
   private lateinit var binding: ActivityMainBinding
+  @Inject
+  lateinit var loginUseCase: LoginUseCase
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    (application as Cripple).getLoginComponent().inject(this)
     if (savedInstanceState == null) {
       supportFragmentManager.beginTransaction()
         .replace(R.id.container, TimelineFragment.newInstance())
@@ -39,6 +45,7 @@ class TimelineActivity : AppCompatActivity(), AddTimelineTabListDialogFragment.L
         R.id.nav_send
       ), binding.drawerLayout
     )
+    println(loginUseCase.hasLoginSession())
     //AddTimelineTabListDialogFragment.newInstance(30).show(supportFragmentManager, "dialog")
   }
 }
