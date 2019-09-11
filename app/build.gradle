@@ -85,4 +85,6 @@ dependencies {
     // view
     implementation "com.xwray:groupie:2.5.1"
     implementation "com.xwray:groupie-databinding:2.5.1"
+    implementation 'com.ethanhua:skeleton:1.1.2'
+    implementation 'io.supercharge:shimmerlayout:2.1.0'
 }

@@ -3,4 +3,6 @@
   <color name="colorPrimary">#05141A</color>
   <color name="colorPrimaryDark">#05141A</color>
   <color name="colorAccent">#304FFE</color>
+  <color name="colorLine">#dfdfdf</color>
+  <color name="light_transparent">#d0d0d0</color>
 </resources>
