@@ -22,7 +22,7 @@ class TimelineActivity : AppCompatActivity(), AddTimelineTabListDialogFragment.L
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    (application as Cripple).getLoginComponent().inject(this)
+    (application as Cripple).getAppComponent().inject(this)
     if (savedInstanceState == null) {
       supportFragmentManager.beginTransaction()
         .replace(R.id.container, TimelineFragment.newInstance())
@@ -36,14 +36,14 @@ class TimelineActivity : AppCompatActivity(), AddTimelineTabListDialogFragment.L
     // Passing each menu ID as a set of Ids because each
     // menu should be considered as top level destinations.
     appBarConfiguration = AppBarConfiguration(
-      setOf(
+      topLevelDestinationIds = setOf(
         R.id.nav_home,
         R.id.nav_gallery,
         R.id.nav_slideshow,
         R.id.nav_tools,
         R.id.nav_share,
         R.id.nav_send
-      ), binding.drawerLayout
+      ), drawerLayout = binding.drawerLayout
     )
     println(loginUseCase.hasLoginSession())
     //AddTimelineTabListDialogFragment.newInstance(30).show(supportFragmentManager, "dialog")

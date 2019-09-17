@@ -10,7 +10,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.text.toSpannable
 import com.godslew.cripple.R
+import com.godslew.cripple.application.Cripple
 import com.godslew.cripple.databinding.FragmentTweetBinding
+import com.godslew.cripple.di.module.SessionModule
+import com.godslew.cripple.domain.entity.Account
+import twitter4j.Twitter
+import twitter4j.auth.AccessToken
+import javax.inject.Inject
 
 
 class TweetFragment : Fragment() {
@@ -28,12 +34,17 @@ class TweetFragment : Fragment() {
   private lateinit var viewModel: TweetViewModel
   private lateinit var binding: FragmentTweetBinding
   private lateinit var text: String
+  @Inject
+  lateinit var twitter: Twitter
 
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View {
     binding = FragmentTweetBinding.inflate(LayoutInflater.from(context), container, false)
+    val session = (requireActivity().application as Cripple).getAppComponent().newSessionComponent(
+      SessionModule(Account("", "", AccessToken("",""))))
+    session.inject(this)
     return binding.root
   }
 
@@ -43,6 +54,7 @@ class TweetFragment : Fragment() {
     binding.buttonTweet.isEnabled = false
     binding.buttonTweet.setOnClickListener {
       viewModel.postTweet(requireContext(), text)
+      println(twitter)
       activity?.finish()
     }
     binding.closeTweet.setOnClickListener {

@@ -1,13 +1,13 @@
 package com.godslew.cripple.application
 
 import android.app.Application
-import com.godslew.cripple.di.component.DaggerLoginComponent
-import com.godslew.cripple.di.component.LoginComponent
-import com.godslew.cripple.di.module.UseCaseModule
+import com.godslew.cripple.di.component.AppComponent
+import com.godslew.cripple.di.component.DaggerAppComponent
+import com.godslew.cripple.di.module.AppModule
 
 class Cripple : Application() {
 
- private lateinit var loginComponent: LoginComponent
+ private lateinit var appComponent: AppComponent
 
   override fun onCreate() {
     super.onCreate()
@@ -15,12 +15,12 @@ class Cripple : Application() {
   }
 
   private fun initializeDagger() {
-    loginComponent = DaggerLoginComponent.builder()
-      .useCaseModule(UseCaseModule())
+    appComponent = DaggerAppComponent.builder()
+      .appModule(AppModule())
       .build()
   }
 
-  fun getLoginComponent(): LoginComponent {
-    return loginComponent
+  fun getAppComponent(): AppComponent {
+    return appComponent
   }
 }
