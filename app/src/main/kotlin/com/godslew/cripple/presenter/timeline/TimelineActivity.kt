@@ -1,17 +1,16 @@
 package com.godslew.cripple.presenter.timeline
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.ui.AppBarConfiguration
 import com.godslew.cripple.R
-import com.godslew.cripple.application.Cripple
 import com.godslew.cripple.databinding.ActivityMainBinding
 import com.godslew.cripple.domain.usecase.LoginUseCase
+import com.godslew.cripple.presenter.BaseActivity
 import com.godslew.cripple.presenter.tweet.TweetActivity
 import javax.inject.Inject
 
-class TimelineActivity : AppCompatActivity(), AddTimelineTabListDialogFragment.Listener {
+class TimelineActivity : BaseActivity(), AddTimelineTabListDialogFragment.Listener {
   override fun onAddTimelineTabClicked(position: Int) {
   }
 
@@ -22,7 +21,6 @@ class TimelineActivity : AppCompatActivity(), AddTimelineTabListDialogFragment.L
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    (application as Cripple).getAppComponent().inject(this)
     if (savedInstanceState == null) {
       supportFragmentManager.beginTransaction()
         .replace(R.id.container, TimelineFragment.newInstance())

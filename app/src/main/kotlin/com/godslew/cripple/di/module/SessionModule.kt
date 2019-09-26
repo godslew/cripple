@@ -8,7 +8,6 @@ import twitter4j.Twitter
 import twitter4j.TwitterFactory
 
 
-
 @Module
 class SessionModule(
   private val account: Account) {

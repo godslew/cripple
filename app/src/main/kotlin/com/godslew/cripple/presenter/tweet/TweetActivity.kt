@@ -2,13 +2,13 @@ package com.godslew.cripple.presenter.tweet
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.core.content.ContextCompat
 import com.godslew.cripple.R
+import com.godslew.cripple.presenter.BaseActivity
 
-class TweetActivity : AppCompatActivity() {
+class TweetActivity : BaseActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)

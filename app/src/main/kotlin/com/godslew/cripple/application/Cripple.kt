@@ -1,26 +1,36 @@
 package com.godslew.cripple.application
 
-import android.app.Application
 import com.godslew.cripple.di.component.AppComponent
 import com.godslew.cripple.di.component.DaggerAppComponent
+import com.godslew.cripple.di.component.SessionComponent
 import com.godslew.cripple.di.module.AppModule
+import com.godslew.cripple.di.module.SessionModule
+import com.godslew.cripple.domain.entity.Account
+import dagger.android.AndroidInjector
+import dagger.android.support.DaggerApplication
+import twitter4j.auth.AccessToken
+import javax.inject.Inject
 
-class Cripple : Application() {
+class Cripple : DaggerApplication() {
+  @Inject
+  internal lateinit var appComponent: AppComponent
 
- private lateinit var appComponent: AppComponent
-
-  override fun onCreate() {
-    super.onCreate()
-    initializeDagger()
+  override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
+    return DaggerAppComponent.builder().appModule(AppModule()).build()
   }
 
-  private fun initializeDagger() {
-    appComponent = DaggerAppComponent.builder()
-      .appModule(AppModule())
+  override fun androidInjector(): AndroidInjector<Any> {
+    return findSessionComponent().androidInjector()
+  }
+
+  private fun findSessionComponent() : SessionComponent {
+    val account = Account("", "", AccessToken("", ""))
+    return appComponent.newSessionComponentBuilder()
+      .sessionModule(SessionModule(account))
       .build()
   }
 
-  fun getAppComponent(): AppComponent {
-    return appComponent
+  override fun onCreate() {
+    super.onCreate()
   }
 }

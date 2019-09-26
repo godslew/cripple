@@ -4,22 +4,17 @@ import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.text.toSpannable
-import com.godslew.cripple.R
-import com.godslew.cripple.application.Cripple
 import com.godslew.cripple.databinding.FragmentTweetBinding
-import com.godslew.cripple.di.module.SessionModule
-import com.godslew.cripple.domain.entity.Account
+import com.godslew.cripple.presenter.BaseFragment
 import twitter4j.Twitter
-import twitter4j.auth.AccessToken
 import javax.inject.Inject
 
 
-class TweetFragment : Fragment() {
+class TweetFragment :BaseFragment() {
 
   companion object {
     private const val MaxInputTextLength = 140
@@ -42,9 +37,6 @@ class TweetFragment : Fragment() {
     savedInstanceState: Bundle?
   ): View {
     binding = FragmentTweetBinding.inflate(LayoutInflater.from(context), container, false)
-    val session = (requireActivity().application as Cripple).getAppComponent().newSessionComponent(
-      SessionModule(Account("", "", AccessToken("",""))))
-    session.inject(this)
     return binding.root
   }
 
