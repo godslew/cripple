@@ -36,14 +36,21 @@ class TimelineFragment : Fragment() {
     super.onActivityCreated(savedInstanceState)
     viewModel = ViewModelProviders.of(this).get(TimelineViewModel::class.java)
     // TODO: Use the ViewModel
-    binding.pager.adapter = adapter
-   // val skeletonScreen = Skeleton.bind(binding.pager)
-   //   .shimmer(true)
-   //   .angle(20)
-   //   .duration(1200)
-   //   .load(R.layout.item_skeleton_tweet)
-   //   .show() //default count is 10
-   // binding.pager.postDelayed({ skeletonScreen.hide() }, 3000)
+    with(binding) {
+      pager.adapter = adapter
+      adapter.update(
+        listOf(
+          TimelineItem(tabType = "Tweet", statuses = mutableListOf())
+        )
+      )
+      // val skeletonScreen = Skeleton.bind(binding.pager)
+      //   .shimmer(true)
+      //   .angle(20)
+      //   .duration(1200)
+      //   .load(R.layout.item_skeleton_tweet)
+      //   .show() //default count is 10
+      // binding.pager.postDelayed({ skeletonScreen.hide() }, 3000)
+    }
     return
   }
 
