@@ -11,7 +11,7 @@
     <com.google.android.material.appbar.AppBarLayout
       android:id="@+id/app_bar"
       android:layout_width="match_parent"
-      android:layout_height="150dp"
+      android:layout_height="100dp"
       android:fitsSystemWindows="true"
       android:theme="@style/AppTheme.AppBarOverlay">
 
@@ -21,7 +21,7 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
         app:contentScrim="?attr/colorPrimary"
-        app:layout_scrollFlags="scroll|exitUntilCollapsed"
+        app:layout_scrollFlags="scroll|enterAlways"
         app:toolbarId="@+id/toolbar">
 
         <androidx.appcompat.widget.Toolbar
