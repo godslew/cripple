@@ -2,18 +2,17 @@ package com.godslew.cripple.presenter.timeline
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.ethanhua.skeleton.Skeleton
-import com.godslew.cripple.R
 import com.godslew.cripple.databinding.TimelineFragmentBinding
-import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.ViewHolder
+import com.godslew.cripple.domain.entity.Account
+import com.godslew.cripple.domain.entity.TimelinePage
+import com.godslew.cripple.domain.value.PageType
+import com.godslew.cripple.presenter.BaseFragment
 
 
-class TimelineFragment : Fragment() {
+class TimelineFragment : BaseFragment() {
 
   companion object {
     fun newInstance() = TimelineFragment()
@@ -21,14 +20,12 @@ class TimelineFragment : Fragment() {
 
   private lateinit var viewModel: TimelineViewModel
   private lateinit var binding: TimelineFragmentBinding
-  private lateinit var adapter : GroupAdapter<ViewHolder>
 
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View? {
     binding = TimelineFragmentBinding.inflate(inflater, container, false)
-    adapter = GroupAdapter()
     return binding.root
   }
 
@@ -37,10 +34,11 @@ class TimelineFragment : Fragment() {
     viewModel = ViewModelProviders.of(this).get(TimelineViewModel::class.java)
     // TODO: Use the ViewModel
     with(binding) {
-      pager.adapter = adapter
-      adapter.update(
-        listOf(
-          TimelineItem(tabType = "Tweet", statuses = mutableListOf())
+      pager.adapter = TimelineAdapter(
+        requireActivity(), listOf(
+          TimelinePage(PageType.HOME, Account.initialize()),
+          TimelinePage(PageType.MENTION, Account.initialize()),
+          TimelinePage(PageType.LIKE, Account.initialize())
         )
       )
       // val skeletonScreen = Skeleton.bind(binding.pager)

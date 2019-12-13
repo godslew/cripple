@@ -16,7 +16,7 @@ class Cripple : DaggerApplication() {
   internal lateinit var appComponent: AppComponent
 
   override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
-    return DaggerAppComponent.builder().appModule(AppModule()).build()
+    return DaggerAppComponent.builder().appModule(AppModule(this)).build()
   }
 
   override fun androidInjector(): AndroidInjector<Any> {

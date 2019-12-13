@@ -2,31 +2,65 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools">
-  <androidx.drawerlayout.widget.DrawerLayout
-    android:id="@+id/drawer_layout"
+
+  <androidx.coordinatorlayout.widget.CoordinatorLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:openDrawer="start">
+    android:fitsSystemWindows="true">
 
-    <include
+    <com.google.android.material.appbar.AppBarLayout
       android:id="@+id/app_bar"
-      layout="@layout/app_bar_main"
       android:layout_width="match_parent"
-      android:layout_height="match_parent" />
-
-    <com.google.android.material.navigation.NavigationView
-      android:id="@+id/nav_view"
-      android:layout_width="wrap_content"
-      android:layout_height="match_parent"
-      android:layout_gravity="start"
-      android:background="@color/colorPrimary"
+      android:layout_height="150dp"
       android:fitsSystemWindows="true"
-      app:headerLayout="@layout/nav_header_main"
-      app:itemTextColor="@android:color/white"
-      app:menu="@menu/activity_main_drawer">
+      android:theme="@style/AppTheme.AppBarOverlay">
 
-    </com.google.android.material.navigation.NavigationView>
+      <com.google.android.material.appbar.CollapsingToolbarLayout
+        android:id="@+id/toolbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        app:contentScrim="?attr/colorPrimary"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed"
+        app:toolbarId="@+id/toolbar">
 
-  </androidx.drawerlayout.widget.DrawerLayout>
+        <androidx.appcompat.widget.Toolbar
+          android:id="@+id/toolbar"
+          android:layout_width="match_parent"
+          android:layout_height="?attr/actionBarSize"
+          app:layout_collapseMode="none"
+          app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+      </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <fragment
+      android:id="@+id/nav_host_fragment"
+      android:name="androidx.navigation.fragment.NavHostFragment"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      app:layout_behavior="@string/appbar_scrolling_view_behavior"
+      app:navGraph="@navigation/navigation_graph" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+      android:id="@+id/fab"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="bottom|end"
+      android:layout_marginEnd="16dp"
+      android:layout_marginBottom="70dp"
+      app:backgroundTint="@color/colorPrimary"
+      app:rippleColor="@android:color/white"
+      app:srcCompat="@drawable/ic_create_white_24dp" />
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+      android:id="@+id/bottom_navigation"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_gravity="bottom"
+      android:background="?attr/colorPrimary"
+      app:menu="@menu/bottom_navigation_menu" />
+  </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
