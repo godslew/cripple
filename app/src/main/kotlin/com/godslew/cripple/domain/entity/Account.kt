@@ -6,4 +6,10 @@ data class Account(
   val consumerKey : String,
   val consumerSecret: String,
   val accessToken: AccessToken
-)
+) {
+  companion object {
+    fun initialize() : Account {
+      return Account("","", AccessToken("",""))
+    }
+  }
+}
