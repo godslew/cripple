@@ -1,4 +1,4 @@
-package com.godslew.cripple.presenter.timeline
+package com.godslew.timeline
 
 import androidx.lifecycle.ViewModel
 

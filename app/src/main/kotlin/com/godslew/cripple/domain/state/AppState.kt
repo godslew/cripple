@@ -1,10 +1,10 @@
 package com.godslew.cripple.domain.state
 
-import com.godslew.cripple.domain.entity.Account
+import com.godslew.core.java.entity.Account
 
 data class AppState(
   val index : Int,
-  val accountList: List<Account>,
+  val accountList: List<com.godslew.core.java.entity.Account>,
   val sessionState: SessionState
 ) : StateType {
   companion object {

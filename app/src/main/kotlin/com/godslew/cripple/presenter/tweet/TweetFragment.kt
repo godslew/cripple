@@ -9,12 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.text.toSpannable
 import com.godslew.cripple.databinding.FragmentTweetBinding
-import com.godslew.cripple.presenter.BaseFragment
+import com.godslew.core.android.presenter.BaseFragment
 import twitter4j.Twitter
 import javax.inject.Inject
 
 
-class TweetFragment :BaseFragment() {
+class TweetFragment : BaseFragment() {
 
   companion object {
     private const val MaxInputTextLength = 140

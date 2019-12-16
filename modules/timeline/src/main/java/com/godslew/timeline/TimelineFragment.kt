@@ -1,15 +1,15 @@
-package com.godslew.cripple.presenter.timeline
+package com.godslew.timeline
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.godslew.cripple.databinding.TimelineFragmentBinding
-import com.godslew.cripple.domain.entity.Account
-import com.godslew.cripple.domain.entity.TimelinePage
-import com.godslew.cripple.domain.value.PageType
-import com.godslew.cripple.presenter.BaseFragment
+import com.godslew.core.android.entity.TimelinePage
+import com.godslew.core.android.presenter.BaseFragment
+import com.godslew.core.java.entity.Account
+import com.godslew.core.java.value.PageType
+import com.godslew.timeline.databinding.TimelineFragmentBinding
 
 
 class TimelineFragment : BaseFragment() {

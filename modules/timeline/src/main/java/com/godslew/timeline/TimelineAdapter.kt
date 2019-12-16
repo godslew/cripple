@@ -1,10 +1,10 @@
-package com.godslew.cripple.presenter.timeline
+package com.godslew.timeline
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.godslew.cripple.domain.entity.TimelinePage
-import com.godslew.cripple.domain.value.PageType
+import com.godslew.core.android.entity.TimelinePage
+import com.godslew.core.java.value.PageType
 
 class TimelineAdapter(
   fragmentActivity: FragmentActivity,

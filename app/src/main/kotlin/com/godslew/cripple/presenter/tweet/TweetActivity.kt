@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.WindowManager
 import androidx.core.content.ContextCompat
 import com.godslew.cripple.R
-import com.godslew.cripple.presenter.BaseActivity
+import com.godslew.core.android.presenter.BaseActivity
 
 class TweetActivity : BaseActivity() {
 

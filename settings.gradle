@@ -1,6 +1,6 @@
 rootProject.name='cripple'
 
-include ':app'
+include ':app', ':core-java'
 
 include ':core-android'
 include ':modules:timeline'

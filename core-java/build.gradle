@@ -1,0 +1,17 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    // twitter
+    // https://mvnrepository.com/artifact/org.twitter4j/twitter4j-core
+    implementation group: 'org.twitter4j', name: 'twitter4j-core', version: '4.0.7'
+    // https://mvnrepository.com/artifact/org.twitter4j/twitter4j-stream
+    implementation group: 'org.twitter4j', name: 'twitter4j-stream', version: '4.0.7'
+    // https://mvnrepository.com/artifact/org.twitter4j/twitter4j-async
+    implementation group: 'org.twitter4j', name: 'twitter4j-async', version: '4.0.7'
+    // https://mvnrepository.com/artifact/org.twitter4j/twitter4j-media-support
+    implementation group: 'org.twitter4j', name: 'twitter4j-media-support', version: '4.0.6'
+}
+

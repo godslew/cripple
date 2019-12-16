@@ -5,7 +5,7 @@ import com.godslew.cripple.di.component.DaggerAppComponent
 import com.godslew.cripple.di.component.SessionComponent
 import com.godslew.cripple.di.module.AppModule
 import com.godslew.cripple.di.module.SessionModule
-import com.godslew.cripple.domain.entity.Account
+import com.godslew.core.java.entity.Account
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 import twitter4j.auth.AccessToken
@@ -24,7 +24,8 @@ class Cripple : DaggerApplication() {
   }
 
   private fun findSessionComponent() : SessionComponent {
-    val account = Account("", "", AccessToken("", ""))
+    val account =
+      com.godslew.core.java.entity.Account("", "", AccessToken("", ""))
     return appComponent.newSessionComponentBuilder()
       .sessionModule(SessionModule(account))
       .build()

@@ -1,15 +1,19 @@
 package com.godslew.cripple.domain.state
 
-import com.godslew.cripple.domain.entity.Account
+import com.godslew.core.java.entity.Account
 import twitter4j.auth.AccessToken
 
 data class SessionState(
-  val account: Account
+  val account: com.godslew.core.java.entity.Account
 ) : StateType {
   companion object {
     fun initial(): SessionState {
       return SessionState(
-        account = Account("", "", AccessToken("",""))
+        account = com.godslew.core.java.entity.Account(
+          "",
+          "",
+          AccessToken("", "")
+        )
       )
     }
   }

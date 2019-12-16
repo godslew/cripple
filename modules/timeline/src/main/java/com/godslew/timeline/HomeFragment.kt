@@ -1,13 +1,13 @@
-package com.godslew.cripple.presenter.timeline
+package com.godslew.timeline
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.godslew.cripple.databinding.FragmentHomeBinding
-import com.godslew.cripple.presenter.BaseFragment
-import com.godslew.cripple.presenter.timeline.item.StatusItem
+import com.godslew.core.android.presenter.BaseFragment
+import com.godslew.timeline.databinding.FragmentHomeBinding
+import com.godslew.timeline.item.StatusItem
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 
