@@ -1,2 +1,6 @@
-include ':app'
 rootProject.name='cripple'
+
+include ':app'
+
+include ':modules:timeline'
+include ':modules:tweet'
