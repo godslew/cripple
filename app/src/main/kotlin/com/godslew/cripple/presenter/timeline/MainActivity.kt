@@ -10,7 +10,6 @@ import com.godslew.cripple.domain.usecase.LoginUseCase
 import com.godslew.cripple.presenter.BaseActivity
 import com.godslew.cripple.presenter.tweet.TweetActivity
 import com.godslew.gksettingpreferences.SettingPreferences
-import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class MainActivity : BaseActivity() {
@@ -28,9 +27,7 @@ class MainActivity : BaseActivity() {
     binding.fab.setOnClickListener {
       startActivity(TweetActivity.createIntent(this))
     }
-    // Passing each menu ID as a set of Ids because each
-    // menu should be considered as top level destinations.
     val navController = findNavController(R.id.nav_host_fragment)
-    setupWithNavController(bottom_navigation, navController)    //setupGesture()
+    setupWithNavController(binding.bottomNavigation, navController)
   }
 }
