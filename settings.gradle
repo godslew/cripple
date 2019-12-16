@@ -2,5 +2,6 @@ rootProject.name='cripple'
 
 include ':app'
 
+include ':core-android'
 include ':modules:timeline'
 include ':modules:tweet'

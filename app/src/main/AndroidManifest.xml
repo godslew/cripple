@@ -12,9 +12,9 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
-    <activity android:name=".presenter.tweet.TweetActivity"
-      android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-    </activity>
+    <activity
+      android:name=".presenter.tweet.TweetActivity"
+      android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     <activity
       android:name=".presenter.timeline.MainActivity"
       android:label="@string/app_name"

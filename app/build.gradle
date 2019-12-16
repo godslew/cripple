@@ -36,7 +36,9 @@ android {
 }
 
 dependencies {
+  implementation project(':core-android')
   implementation project(':modules:timeline')
+  implementation project(':modules:tweet')
 
   implementation fileTree(dir: 'libs', include: ['*.jar'])
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
