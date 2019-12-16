@@ -1,4 +1,4 @@
-package com.godslew.cripple.domain.entity
+package com.godslew.core.java.entity
 
 import twitter4j.Status
 

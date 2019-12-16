@@ -1,8 +1,7 @@
-package com.godslew.cripple.presenter.timeline.item
+package com.godslew.timeline.item
 
-import com.godslew.cripple.R
-import com.godslew.cripple.databinding.ItemStatusTypeTweetBinding
-import com.godslew.cripple.domain.entity.CrippleStatus
+import com.godslew.timeline.R
+import com.godslew.timeline.databinding.ItemStatusTypeTweetBinding
 import com.xwray.groupie.databinding.BindableItem
 
 sealed class StatusItem {
