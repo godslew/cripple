@@ -1,24 +1,24 @@
 package com.godslew.timeline
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.godslew.core.android.entity.TimelinePage
+import com.godslew.core.android.factory.ViewModelFactory
 import com.godslew.core.android.presenter.BaseFragment
 import com.godslew.core.java.entity.Account
 import com.godslew.core.java.value.PageType
 import com.godslew.timeline.databinding.TimelineFragmentBinding
+import javax.inject.Inject
 
 
 class TimelineFragment : BaseFragment() {
 
-  companion object {
-    fun newInstance() = TimelineFragment()
-  }
+  @Inject internal lateinit var factory: ViewModelFactory<TimelineViewModel>
+  private val viewModel: TimelineViewModel by viewModels { factory }
 
-  private lateinit var viewModel: TimelineViewModel
   private lateinit var binding: TimelineFragmentBinding
 
   override fun onCreateView(
@@ -31,8 +31,6 @@ class TimelineFragment : BaseFragment() {
 
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
-    viewModel = ViewModelProviders.of(this).get(TimelineViewModel::class.java)
-    // TODO: Use the ViewModel
     with(binding) {
       pager.adapter = TimelineAdapter(
         requireActivity(), listOf(

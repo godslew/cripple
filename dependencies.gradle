@@ -40,6 +40,7 @@ ext.versions = [
 
   // twitter
   twitter4j  : '4.0.7',
+  twitter4jmedia : '4.0.6',
 
   // View
   view       : [
@@ -90,5 +91,52 @@ ext.versions = [
 ]
 
 ext.libs = [
+  dagger: [
+    java: [
+      core: "com.google.dagger:dagger:${versions.dagger.core}",
+      jsr250: "javax.annotation:jsr250-api:${versions.dagger.jsr250}",
+      compiler: "com.google.dagger:dagger-compiler:${versions.dagger.core}"
+    ],
+    android: [
+      core: "com.google.dagger:dagger-android:${versions.dagger.core}",
+      support: "com.google.dagger:dagger-android-support:${versions.dagger.core}",
+      compiler: "com.google.dagger:dagger-android-processor:${versions.dagger.core}"
+    ]
+  ],
+  kotlin: [
+    stdlib: "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
+    plugin: "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
+    allopen: "org.jetbrains.kotlin:kotlin-allopen:${versions.kotlin}"
+  ],
+
+  androidx: [
+    corektx :"androidx.core:core-ktx:${versions.androidx.corektx}",
+    fragmentktx: "androidx.fragment:fragment-ktx:${versions.androidx.fragmentktx}"
+  ],
+  twitter4j : [
+    core : "org.twitter4j:twitter4j-core:${versions.twitter4j}",
+    stream : "org.twitter4j:twitter4j-stream:${versions.twitter4j}",
+    async : "org.twitter4j:twitter4j-async:${versions.twitter4j}",
+    media : "org.twitter4j:twitter4j-media-support:${versions.twitter4jmedia}",
+  ],
+  rx2: [
+    java: "io.reactivex.rxjava2:rxjava:${versions.rx2.java}",
+    kotlin: "io.reactivex.rxjava2:rxkotlin:${versions.rx2.kotlin}",
+    android: "io.reactivex.rxjava2:rxandroid:${versions.rx2.android}",
+    relay: "com.jakewharton.rxrelay2:rxrelay:${versions.rx2.relay}",
+    property: [
+      core: "com.github.k-kagurazaka.rx-property-android:rx-property:${versions.rx2.property}",
+      kotlin: "com.github.k-kagurazaka.rx-property-android:rx-property-kotlin:${versions.rx2.property}"
+    ],
+    binding: [
+      core: "com.jakewharton.rxbinding2:rxbinding-kotlin:${versions.rx2.binding}",
+      support: "com.jakewharton.rxbinding2:rxbinding-support-v4-kotlin:${versions.rx2.binding}",
+      recyclerview: "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7-kotlin:${versions.rx2.binding}"
+    ],
+    interop: [
+      java: "com.github.akarnokd:rxjava2-interop:${versions.rx2.interop.java}",
+      kotlin: "com.lvla.android:rxjava2-interop-kt:${versions.rx2.interop.kotlin}"
+    ]
+  ],
 
 ]

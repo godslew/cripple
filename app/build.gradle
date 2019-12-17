@@ -3,12 +3,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
-  compileSdkVersion 29
-  buildToolsVersion "29.0.2"
+  compileSdkVersion versions.compilesdk
+  buildToolsVersion versions.buildtool
   defaultConfig {
     applicationId "com.godslew.cripple"
-    minSdkVersion 22
-    targetSdkVersion 29
+    minSdkVersion versions.minsdk
+    targetSdkVersion versions.targetsdk
     versionCode 1
     versionName "1.0"
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -40,8 +40,6 @@ dependencies {
   implementation project(':modules:timeline')
   implementation project(':modules:tweet')
 
-  implementation fileTree(dir: 'libs', include: ['*.jar'])
-  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
   implementation 'androidx.appcompat:appcompat:1.1.0'
   implementation 'androidx.core:core-ktx:1.1.0'
   implementation 'androidx.navigation:navigation-fragment-ktx:2.1.0'
@@ -53,7 +51,6 @@ dependencies {
   androidTestImplementation 'androidx.test:runner:1.2.0'
   androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-  // external library
   // ui
   implementation 'androidx.viewpager2:viewpager2:1.0.0'
   implementation 'com.google.android.material:material:1.0.0'
@@ -62,30 +59,9 @@ dependencies {
   implementation 'androidx.navigation:navigation-ui:2.1.0'
   implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
-  // rx
-  implementation "io.reactivex.rxjava2:rxjava:2.2.11"
-  implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
-  implementation "io.reactivex.rxjava2:rxkotlin:2.3.0"
-  implementation "com.jakewharton.rxrelay2:rxrelay:2.1.0"
-
-  // twitter
-  // https://mvnrepository.com/artifact/org.twitter4j/twitter4j-core
-  implementation group: 'org.twitter4j', name: 'twitter4j-core', version: '4.0.7'
-  // https://mvnrepository.com/artifact/org.twitter4j/twitter4j-stream
-  implementation group: 'org.twitter4j', name: 'twitter4j-stream', version: '4.0.7'
-  // https://mvnrepository.com/artifact/org.twitter4j/twitter4j-async
-  implementation group: 'org.twitter4j', name: 'twitter4j-async', version: '4.0.7'
-  // https://mvnrepository.com/artifact/org.twitter4j/twitter4j-media-support
-  implementation group: 'org.twitter4j', name: 'twitter4j-media-support', version: '4.0.6'
-
-
   // dagger
-  implementation "com.google.dagger:dagger:2.25.2"
-  implementation "com.google.dagger:dagger-android:2.25.2"
-  implementation "com.google.dagger:dagger-android-support:2.25.2"
-  kapt "com.google.dagger:dagger-android-processor:2.25.2"
-  kapt "com.google.dagger:dagger-compiler:2.25.2"
-  compileOnly "javax.annotation:jsr250-api:1.0"
+  kapt libs.dagger.java.compiler
+  kapt libs.dagger.android.compiler
 
   // redux
   implementation 'com.freeletics.rxredux:rxredux:1.0.1'
@@ -98,4 +74,6 @@ dependencies {
 
   //infra
   implementation 'com.godslew.android:gk-setting-preferences:1.0.0'
+
+  implementation fileTree(dir: 'libs', include: ['*.jar'])
 }

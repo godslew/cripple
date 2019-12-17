@@ -1,7 +1,11 @@
 package com.godslew.timeline
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import javax.inject.Inject
 
-class TimelineViewModel : ViewModel() {
+class TimelineViewModel @Inject constructor(
+  application: Application
+  ) : AndroidViewModel(application) {
   // TODO: Implement the ViewModel
 }
