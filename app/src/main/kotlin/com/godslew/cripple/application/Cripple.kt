@@ -25,7 +25,7 @@ class Cripple : DaggerApplication() {
 
   private fun findSessionComponent() : SessionComponent {
     val account =
-      com.godslew.core.java.entity.Account("", "", AccessToken("", ""))
+      Account("", "", AccessToken("", ""))
     return appComponent.newSessionComponentBuilder()
       .sessionModule(SessionModule(account))
       .build()

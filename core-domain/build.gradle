@@ -17,11 +17,10 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
   }
-  dataBinding {
-    enabled = true
-  }
 }
 
 dependencies {
-  implementation project(':core-domain')
+  api project(':core-android')
+
+  implementation fileTree(dir: 'libs', include: ['*.jar'])
 }

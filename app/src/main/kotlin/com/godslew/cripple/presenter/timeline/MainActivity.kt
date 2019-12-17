@@ -6,7 +6,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.godslew.cripple.R
 import com.godslew.cripple.databinding.ActivityMainBinding
-import com.godslew.cripple.domain.usecase.LoginUseCase
+import com.godslew.core.domain.usecase.LoginUseCase
 import com.godslew.core.android.presenter.BaseActivity
 import com.godslew.cripple.presenter.tweet.TweetActivity
 import com.godslew.gksettingpreferences.SettingPreferences

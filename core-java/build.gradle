@@ -6,9 +6,9 @@ dependencies {
     api libs.kotlin.stdlib
 
     // twitter
-    implementation libs.twitter4j.core
-    implementation libs.twitter4j.stream
-    implementation libs.twitter4j.async
-    implementation libs.twitter4j.media
+    api libs.twitter4j.core
+    api libs.twitter4j.stream
+    api libs.twitter4j.async
+    api libs.twitter4j.media
 }
 

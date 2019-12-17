@@ -4,7 +4,7 @@ import com.godslew.core.java.entity.Account
 
 data class AppState(
   val index : Int,
-  val accountList: List<com.godslew.core.java.entity.Account>,
+  val accountList: List<Account>,
   val sessionState: SessionState
 ) : StateType {
   companion object {

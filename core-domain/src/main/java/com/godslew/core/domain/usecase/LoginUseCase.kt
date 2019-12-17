@@ -1,4 +1,4 @@
-package com.godslew.cripple.domain.usecase
+package com.godslew.core.domain.usecase
 
 import javax.inject.Inject
 

@@ -91,6 +91,7 @@ ext.versions = [
 ]
 
 ext.libs = [
+  gradle: "com.android.tools.build:gradle:${versions.gradle}",
   dagger: [
     java: [
       core: "com.google.dagger:dagger:${versions.dagger.core}",
