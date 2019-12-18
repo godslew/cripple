@@ -196,6 +196,4 @@ ext.libs = [
   misc       : [
     threetenabp: "com.jakewharton.threetenabp:threetenabp:${versions.misc.threetenabp}",
   ],
-
-
 ]
