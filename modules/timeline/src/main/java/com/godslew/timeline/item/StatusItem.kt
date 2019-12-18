@@ -2,6 +2,7 @@ package com.godslew.timeline.item
 
 import com.godslew.timeline.R
 import com.godslew.timeline.databinding.ItemStatusTypeTweetBinding
+import com.xwray.groupie.Item
 import com.xwray.groupie.databinding.BindableItem
 
 sealed class StatusItem {
@@ -17,6 +18,24 @@ sealed class StatusItem {
         screenName.text = handleName//"@${status.user.screenName}"
         statusText.text = handleName //status.text
       }
+    }
+
+    override fun isSameAs(other: Item<*>?): Boolean {
+      if (other != null && other is TweetItem) {
+        return other.handleName == handleName
+      }
+      return false
+    }
+
+    override fun equals(other: Any?): Boolean {
+      if (other != null && other is TweetItem) {
+        return other.handleName == handleName
+      }
+      return false
+    }
+
+    override fun hashCode(): Int {
+      return handleName.hashCode()
     }
   }
 }
