@@ -11,6 +11,7 @@ import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 
+
 class AppStore<STATE: StateType, ACTION: ActionType, REDUCER: Reducer<STATE, ACTION>> (
   private val disposable: CompositeDisposable,
   private val initialState: STATE,
