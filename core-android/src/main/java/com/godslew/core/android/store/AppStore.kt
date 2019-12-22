@@ -22,7 +22,7 @@ class AppStore<STATE: StateType, ACTION: ActionType, REDUCER: Reducer<STATE, ACT
   init {
     AppDispatcher.on(ActionType::class.java)
       .map { action ->
-        val state = relay.value!!
+        val state = relay.value
         reducer.invoke(state, action as ACTION)
       }
       .bindTo { relay.accept(it) }

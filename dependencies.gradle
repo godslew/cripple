@@ -57,7 +57,7 @@ ext.versions = [
     java    : '2.2.11',
     kotlin  : '2.3.0',
     android : '2.1.1',
-    relay   : '2.1.0',
+    relay   : '2.0.0',
     property: '4.0.0',
     binding : '2.1.1',
     interop : [
