@@ -1,5 +1,6 @@
 package com.godslew.cripple.domain.state
 
+import com.godslew.core.android.redux.StateType
 import com.godslew.core.java.entity.Account
 
 data class AppState(

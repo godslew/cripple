@@ -1,4 +1,4 @@
-package com.godslew.cripple.di.scope
+package com.godslew.core.android.scope
 
 import javax.inject.Scope
 

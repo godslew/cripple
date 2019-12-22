@@ -1,6 +1,6 @@
 package com.godslew.cripple.di.module
 
-import com.godslew.cripple.di.scope.SessionScope
+import com.godslew.core.android.scope.SessionScope
 import com.godslew.core.java.entity.Account
 import dagger.Module
 import dagger.Provides
@@ -10,7 +10,7 @@ import twitter4j.TwitterFactory
 
 @Module
 class SessionModule(
-  private val account: com.godslew.core.java.entity.Account
+  private val account: Account
 ) {
 
   @SessionScope

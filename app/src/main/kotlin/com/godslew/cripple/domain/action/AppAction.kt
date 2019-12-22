@@ -1,5 +1,6 @@
 package com.godslew.cripple.domain.action
 
+import com.godslew.core.android.redux.ActionType
 import twitter4j.Status
 
 sealed class AppAction : ActionType {

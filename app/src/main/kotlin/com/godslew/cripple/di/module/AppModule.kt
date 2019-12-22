@@ -1,7 +1,7 @@
 package com.godslew.cripple.di.module
 
 import android.app.Application
-import com.godslew.cripple.di.scope.AppScope
+import com.godslew.core.android.scope.AppScope
 import com.godslew.gksettingpreferences.SettingPreferences
 import dagger.Module
 import dagger.Provides

@@ -3,7 +3,7 @@ package com.godslew.cripple.di.component
 import com.godslew.cripple.di.module.SessionActivityModule
 import com.godslew.cripple.di.module.SessionFragmentModule
 import com.godslew.cripple.di.module.SessionModule
-import com.godslew.cripple.di.scope.SessionScope
+import com.godslew.core.android.scope.SessionScope
 import dagger.Subcomponent
 import dagger.android.DispatchingAndroidInjector
 

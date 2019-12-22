@@ -4,8 +4,7 @@ import com.godslew.cripple.application.Cripple
 import com.godslew.cripple.di.module.AppActivityModule
 import com.godslew.cripple.di.module.AppFragmentModule
 import com.godslew.cripple.di.module.AppModule
-import com.godslew.cripple.di.module.SessionModule
-import com.godslew.cripple.di.scope.AppScope
+import com.godslew.core.android.scope.AppScope
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
