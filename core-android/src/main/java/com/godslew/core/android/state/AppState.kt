@@ -1,4 +1,4 @@
-package com.godslew.cripple.domain.state
+package com.godslew.core.android.state
 
 import com.godslew.core.android.redux.StateType
 import com.godslew.core.java.entity.Account

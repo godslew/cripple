@@ -1,8 +1,8 @@
-package com.godslew.cripple.domain.reducer
+package com.godslew.core.android.redux
 
 import com.freeletics.rxredux.Reducer
-import com.godslew.cripple.domain.action.AppAction
-import com.godslew.cripple.domain.state.SessionState
+import com.godslew.core.android.action.AppAction
+import com.godslew.core.android.state.SessionState
 
 object SessionReducer : Reducer<SessionState, AppAction.SessionAction>{
   override fun invoke(state: SessionState, action: AppAction.SessionAction): SessionState {

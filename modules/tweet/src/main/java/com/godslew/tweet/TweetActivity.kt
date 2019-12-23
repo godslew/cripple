@@ -6,15 +6,18 @@ import android.os.Bundle
 import android.view.WindowManager
 import androidx.core.content.ContextCompat
 import com.godslew.core.android.presenter.BaseActivity
+import com.godslew.tweet.databinding.ActivityTweetBinding
 
 class TweetActivity : BaseActivity() {
 
+  private val  binding by lazy { ActivityTweetBinding.inflate(layoutInflater) }
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_tweet)
+    setContentView(binding.root)
     if (savedInstanceState == null) {
       supportFragmentManager.beginTransaction()
-        .replace(R.id.container, TweetFragment.newInstance())
+        .replace(binding.container.id, TweetFragment.newInstance())
         .commitNow()
     }
     window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);

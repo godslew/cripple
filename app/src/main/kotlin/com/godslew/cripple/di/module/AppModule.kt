@@ -3,9 +3,9 @@ package com.godslew.cripple.di.module
 import android.app.Application
 import com.godslew.core.android.scope.AppScope
 import com.godslew.core.android.store.AppStore
-import com.godslew.cripple.domain.action.AppAction
-import com.godslew.cripple.domain.reducer.AppReducer
-import com.godslew.cripple.domain.state.AppState
+import com.godslew.core.android.action.AppAction
+import com.godslew.core.android.redux.AppReducer
+import com.godslew.core.android.state.AppState
 import com.godslew.gksettingpreferences.SettingPreferences
 import dagger.Module
 import dagger.Provides

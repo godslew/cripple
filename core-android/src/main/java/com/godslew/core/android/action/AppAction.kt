@@ -1,4 +1,4 @@
-package com.godslew.cripple.domain.action
+package com.godslew.core.android.action
 
 import com.godslew.core.android.redux.ActionType
 import twitter4j.Status
