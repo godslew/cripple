@@ -1,11 +1,10 @@
-package com.godslew.cripple.presenter.tweet
+package com.godslew.tweet
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.core.content.ContextCompat
-import com.godslew.cripple.R
 import com.godslew.core.android.presenter.BaseActivity
 
 class TweetActivity : BaseActivity() {

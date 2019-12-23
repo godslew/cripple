@@ -7,7 +7,7 @@
     android:id="@+id/tweet"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presenter.tweet.TweetFragment">
+    tools:context="com.godslew.tweet.TweetFragment">
 
     <LinearLayout
       android:layout_width="match_parent"

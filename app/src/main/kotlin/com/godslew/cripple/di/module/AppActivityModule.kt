@@ -1,6 +1,6 @@
 package com.godslew.cripple.di.module
 
-import com.godslew.cripple.presenter.timeline.MainActivity
+import com.godslew.cripple.presenter.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

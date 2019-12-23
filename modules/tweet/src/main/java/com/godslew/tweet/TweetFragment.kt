@@ -1,6 +1,5 @@
-package com.godslew.cripple.presenter.tweet
+package com.godslew.tweet
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -8,8 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.text.toSpannable
-import com.godslew.cripple.databinding.FragmentTweetBinding
+import androidx.fragment.app.viewModels
+import com.godslew.core.android.factory.ViewModelFactory
 import com.godslew.core.android.presenter.BaseFragment
+import com.godslew.tweet.databinding.FragmentTweetBinding
 import twitter4j.Twitter
 import javax.inject.Inject
 
@@ -26,17 +27,20 @@ class TweetFragment : BaseFragment() {
     override fun onTextChanged(c: CharSequence?, p1: Int, p2: Int, p3: Int) {}
   }
 
-  private lateinit var viewModel: TweetViewModel
   private lateinit var binding: FragmentTweetBinding
   private lateinit var text: String
   @Inject
   lateinit var twitter: Twitter
 
+  @Inject internal lateinit var factory: ViewModelFactory<TweetViewModel>
+  private val viewModel: TweetViewModel by viewModels { factory }
+
+
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View {
-    binding = FragmentTweetBinding.inflate(LayoutInflater.from(context), container, false)
+    binding = FragmentTweetBinding.inflate(inflater, container, false)
     return binding.root
   }
 
@@ -53,7 +57,8 @@ class TweetFragment : BaseFragment() {
       activity?.finish()
     }
 
-    binding.textTweet.addTextChangedListener((object: CustomTextWatcher{
+    binding.textTweet.addTextChangedListener((object:
+      CustomTextWatcher {
       override fun afterTextChanged(e: Editable?) {
         //ここに処理を書く
         val edit = e ?: return
@@ -61,7 +66,7 @@ class TweetFragment : BaseFragment() {
           binding.buttonTweet.isEnabled = false
           return
         }
-        if (edit.length > 140) {
+        if (edit.length > MaxInputTextLength) {
           binding.buttonTweet.isEnabled = false
           return
         }
@@ -70,11 +75,4 @@ class TweetFragment : BaseFragment() {
       }
     }))
   }
-
-  override fun onActivityCreated(savedInstanceState: Bundle?) {
-    super.onActivityCreated(savedInstanceState)
-    viewModel = ViewModelProviders.of(this).get(TweetViewModel::class.java)
-    // TODO: Use the ViewModel
-  }
-
 }

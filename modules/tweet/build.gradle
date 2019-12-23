@@ -24,4 +24,15 @@ android {
 
 dependencies {
   implementation project(':core-domain')
+
+  // androidx
+  implementation libs.androidx.appcompat
+  implementation libs.androidx.corektx
+  implementation libs.androidx.fragmentktx
+
+  // external library
+  // ui
+  implementation libs.view.viewpager2
+  implementation libs.view.material
+  implementation libs.androidx.constraintlayout
 }

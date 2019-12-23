@@ -1,4 +1,4 @@
-package com.godslew.cripple.presenter.timeline
+package com.godslew.cripple.presenter
 
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -8,7 +8,7 @@ import com.godslew.cripple.R
 import com.godslew.cripple.databinding.ActivityMainBinding
 import com.godslew.core.domain.usecase.LoginUseCase
 import com.godslew.core.android.presenter.BaseActivity
-import com.godslew.cripple.presenter.tweet.TweetActivity
+import com.godslew.tweet.TweetActivity
 import com.godslew.gksettingpreferences.SettingPreferences
 import javax.inject.Inject
 
