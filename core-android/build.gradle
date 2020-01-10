@@ -40,7 +40,7 @@ dependencies {
   api libs.rxredux
 
   //infra
-  implementation libs.gk.settingpreferences
+  api libs.gk.settingpreferences
 
   // debug
   api libs.debugging.timber

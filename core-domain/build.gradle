@@ -22,6 +22,4 @@ android {
 dependencies {
   api project(':core-android')
 
-  //infra
-  implementation libs.gk.settingpreferences
 }

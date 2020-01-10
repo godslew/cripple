@@ -63,17 +63,11 @@ dependencies {
   kapt libs.dagger.java.compiler
   kapt libs.dagger.android.compiler
 
-  // redux
-  implementation 'com.freeletics.rxredux:rxredux:1.0.1'
-
   // view
-  implementation "com.xwray:groupie:2.5.1"
-  implementation "com.xwray:groupie-databinding:2.5.1"
+  implementation libs.view.groupie.core
+  implementation libs.view.groupie.databinding
   implementation 'com.ethanhua:skeleton:1.1.2'
   implementation 'io.supercharge:shimmerlayout:2.1.0'
-
-  //infra
-  implementation 'com.godslew.android:gk-setting-preferences:1.0.0'
 
   implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
