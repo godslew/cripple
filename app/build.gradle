@@ -37,6 +37,8 @@ android {
 
 dependencies {
   implementation project(':core-domain')
+  implementation project(':core-component')
+
   implementation project(':modules:timeline')
   implementation project(':modules:tweet')
 

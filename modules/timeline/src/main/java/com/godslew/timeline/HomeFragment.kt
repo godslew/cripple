@@ -9,7 +9,7 @@ import com.godslew.core.android.presenter.BaseFragment
 import com.godslew.timeline.databinding.FragmentHomeBinding
 import com.godslew.timeline.item.StatusItem
 import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.ViewHolder
+import com.xwray.groupie.GroupieViewHolder
 
 class HomeFragment : BaseFragment() {
 
@@ -34,7 +34,7 @@ class HomeFragment : BaseFragment() {
   }
 
   private fun setupRecycleView() {
-    val adapter = GroupAdapter<ViewHolder>()
+    val adapter = GroupAdapter<GroupieViewHolder>()
     val manager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
     binding.list.adapter = adapter
     binding.list.layoutManager = manager

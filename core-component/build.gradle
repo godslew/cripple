@@ -17,23 +17,9 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
   }
-  dataBinding {
-    enabled = true
-  }
 }
 
 dependencies {
-  implementation project(':core-domain')
-  implementation project(':core-component')
+  api project(':core-android')
 
-  // androidx
-  implementation libs.androidx.appcompat
-  implementation libs.androidx.corektx
-  implementation libs.androidx.fragmentktx
-
-  // external library
-  // ui
-  implementation libs.view.viewpager2
-  implementation libs.view.material
-  implementation libs.androidx.constraintlayout
 }
