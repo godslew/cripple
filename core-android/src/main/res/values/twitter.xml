@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="CK">tGzr897veygmfKW2Ra6gbAoL3</string>
-  <string name="CS">B8kIt9JrSQZRMgpLegHUeJPF2bkzuIovnpPdJDje5ROqxjtsWS</string>
+  <string name="CK">j8wfnn2zTMRKFJF22OB06hsts</string>
+  <string name="CS">ORRdbkpztyUWSRMx0j6NlCPfGGpwSj8H0n2ZWGa795hJmNY0RP</string>
   <string name="twitter_callback_url">gcripple://</string>
   <string name="twitter_schema">gcripple</string>
   <string name="twitter_oauth_failed">認証失敗……</string>
