@@ -2,4 +2,8 @@
 <resources>
   <string name="CK">tGzr897veygmfKW2Ra6gbAoL3</string>
   <string name="CS">B8kIt9JrSQZRMgpLegHUeJPF2bkzuIovnpPdJDje5ROqxjtsWS</string>
+  <string name="twitter_callback_url">gcripple://</string>
+  <string name="twitter_schema">gcripple</string>
+  <string name="twitter_oauth_failed">認証失敗……</string>
+  <string name="twitter_oauth_success">認証成功！</string>
 </resources>

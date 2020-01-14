@@ -29,7 +29,18 @@
 
     <activity
       android:name="com.godslew.oauth.TwitterLoginActivity"
-      android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-</application>
+      android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+      android:launchMode="singleTop" >
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data
+          android:scheme="@string/twitter_schema" />
+      </intent-filter>
+
+
+    </activity>
+  </application>
 
 </manifest>
