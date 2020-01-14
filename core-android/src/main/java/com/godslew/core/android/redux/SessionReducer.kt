@@ -7,7 +7,11 @@ import com.godslew.core.android.state.SessionState
 object SessionReducer : Reducer<SessionState, AppAction.SessionAction>{
   override fun invoke(state: SessionState, action: AppAction.SessionAction): SessionState {
     return when(action) {
-      is AppAction.SessionAction.PostTweetAction -> {state}
+      is AppAction.SessionAction.TweetAction -> {
+        when(action) {
+          is AppAction.SessionAction.TweetAction.SendTweet -> TODO()
+        }
+      }
     }
   }
 }

@@ -10,6 +10,13 @@ object AppReducer : Reducer<AppState, AppAction> {
       is AppAction.SessionAction -> {
         state.copy(sessionState = SessionReducer.invoke(state.sessionState, action))
       }
+      is AppAction.AccountAction -> {
+        when(action) {
+          is AppAction.AccountAction.RegisterAction -> state.copy(accountList = state.accountList.plus(action.account))
+          is AppAction.AccountAction.ChangeAction -> state.copy(current = action.account)
+          is AppAction.AccountAction.Load -> state.copy(accountList = action.accounts)
+        }
+      }
     }
   }
 }

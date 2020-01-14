@@ -41,6 +41,7 @@ dependencies {
 
   implementation project(':modules:timeline')
   implementation project(':modules:tweet')
+  implementation project(':modules:oauth')
 
   implementation 'androidx.appcompat:appcompat:1.1.0'
   implementation 'androidx.core:core-ktx:1.1.0'

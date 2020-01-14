@@ -1,6 +1,8 @@
 package com.godslew.core.domain.usecase
 
+import com.godslew.core.android.action.AppAction
 import com.godslew.core.android.entity.Accounts
+import com.godslew.core.android.redux.AppDispatcher
 import com.godslew.core.android.scope.AppScope
 import com.godslew.gksettingpreferences.SettingPreferences
 import io.reactivex.Single
@@ -18,6 +20,7 @@ class LoginUseCase @Inject constructor(
         return@create
       }
       it.onSuccess(accounts.list.isNotEmpty())
+      AppDispatcher.dispatch(AppAction.AccountAction.Load(accounts.list))
     }
   }
 
