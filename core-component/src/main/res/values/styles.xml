@@ -17,4 +17,9 @@
 
   <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+  <style name="PrimaryButton" parent="Widget.AppCompat.Button">
+    <item name="android:textColor">@color/white</item>
+    <item name="android:background">@drawable/button_primary</item>
+  </style>
+
 </resources>

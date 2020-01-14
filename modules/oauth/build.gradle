@@ -30,19 +30,13 @@ dependencies {
   implementation libs.androidx.corektx
   implementation libs.androidx.fragmentktx
 
-  // external library
-  // ui
-  implementation libs.androidx.constraintlayout
-
   // view
+  implementation libs.androidx.constraintlayout
+  implementation libs.view.material
   implementation libs.view.groupie.core
   implementation libs.view.groupie.databinding
   implementation libs.view.skeleton
   implementation libs.view.shimmerlayout
-
-  // dagger
-  kapt libs.dagger.java.compiler
-  kapt libs.dagger.android.compiler
 
   //infra
   implementation libs.gk.settingpreferences

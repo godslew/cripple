@@ -15,8 +15,10 @@ import com.godslew.core.java.Constants
 import com.godslew.tweet.TweetActivity
 import com.godslew.gksettingpreferences.SettingPreferences
 import com.godslew.oauth.TwitterLoginActivity
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
+import timber.log.Timber
 import javax.inject.Inject
 
 class MainActivity : BaseActivity() {
@@ -53,7 +55,7 @@ class MainActivity : BaseActivity() {
   private fun setup() {
     viewModel.isLogin
       .bindTo {
-      startActivityForResult(TwitterLoginActivity.createIntent(this), Constants.RequestCodes.TwitterLogin)
+        startActivityForResult(TwitterLoginActivity.createIntent(this), Constants.RequestCodes.TwitterLogin)
     }
       .addTo(disposable)
 

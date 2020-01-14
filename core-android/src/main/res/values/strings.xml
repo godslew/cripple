@@ -14,6 +14,7 @@
   <string name="menu_share">Share</string>
   <string name="menu_send">Send</string>
   <string name="tweet">つぶやく</string>
+  <string name="oauth">認証する</string>
   <string name="close">閉じる</string>
   <string name="text_what_are_you_doing">いまどうしてる？</string>
   <string name="menu_profile">プロフィール</string>
