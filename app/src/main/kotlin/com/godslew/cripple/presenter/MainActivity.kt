@@ -56,6 +56,8 @@ class MainActivity : BaseActivity() {
       startActivityForResult(TwitterLoginActivity.createIntent(this), Constants.RequestCodes.TwitterLogin)
     }
       .addTo(disposable)
+
+    viewModel.setup()
   }
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

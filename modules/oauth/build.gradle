@@ -40,6 +40,10 @@ dependencies {
   implementation libs.view.skeleton
   implementation libs.view.shimmerlayout
 
+  // dagger
+  kapt libs.dagger.java.compiler
+  kapt libs.dagger.android.compiler
+
   //infra
   implementation libs.gk.settingpreferences
 }
