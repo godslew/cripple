@@ -55,11 +55,15 @@
         android:background="@color/colorPrimary"
         android:orientation="horizontal">
 
-        <ImageView
+        <com.makeramen.roundedimageview.RoundedImageView
           android:id="@+id/icon_current_user"
           android:layout_width="30dp"
           android:layout_height="30dp"
-          android:layout_weight="0.2"
+          android:layout_marginEnd="10dp"
+          android:layout_marginStart="10dp"
+          android:scaleType="centerCrop"
+          app:riv_mutate_background="true"
+          app:riv_oval="true"
           tools:src="@mipmap/ic_launcher"
           android:contentDescription="TODO" />
 

@@ -36,4 +36,5 @@ dependencies {
   implementation libs.view.viewpager2
   implementation libs.view.material
   implementation libs.androidx.constraintlayout
+  implementation libs.view.roundedimageview
 }
