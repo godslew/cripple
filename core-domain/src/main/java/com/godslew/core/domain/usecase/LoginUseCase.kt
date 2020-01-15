@@ -5,12 +5,11 @@ import com.godslew.core.android.action.AppAction
 import com.godslew.core.android.entity.Accounts
 import com.godslew.core.android.redux.AppDispatcher
 import com.godslew.core.android.scope.AppScope
-import com.godslew.core.domain.R
+import com.godslew.core.android.utils.TwitterUtils
+import com.godslew.core.java.entity.Account
 import com.godslew.gksettingpreferences.SettingPreferences
 import io.reactivex.Single
-import twitter4j.Twitter
 import twitter4j.TwitterException
-import twitter4j.TwitterFactory
 import twitter4j.auth.AccessToken
 import twitter4j.auth.RequestToken
 import javax.inject.Inject
@@ -23,6 +22,7 @@ class LoginUseCase @Inject constructor(
     return Single.create {
       val accounts = settingPreferences.load(AccountsStoreName, Accounts::class.java)
       if (accounts == null) {
+        AppDispatcher.dispatch(AppAction.AccountAction.Load(Accounts.initialize().list))
         it.onSuccess(false)
         return@create
       }
@@ -31,23 +31,18 @@ class LoginUseCase @Inject constructor(
     }
   }
 
+  fun createAccount(context: Context, accessToken: AccessToken) : Account {
+    val keyPair = TwitterUtils.clientKey(context)
+    val (consumerKey, consumerSecret) = keyPair
+    return Account(consumerKey, consumerSecret, accessToken)
+  }
+
   companion object {
     private const val AccountsStoreName = "cripple_accounts"
   }
 
-  // 認証用のインスタンスを生成
-  fun createTwitterClientInstance(context: Context): Twitter {
-    val consumerKey = context.getString(R.string.CK)
-    val consumerSecret = context.getString(R.string.CS)
-
-    val factory = TwitterFactory()
-    val twitter = factory.instance
-    twitter.setOAuthConsumer(consumerKey, consumerSecret)
-    twitter.oAuthAccessToken = null
-    return twitter
-  }
-
-  fun startAuthorize(tw : Twitter, callBack : String) : Single<RequestToken> {
+  fun startAuthorize(context: Context, callBack : String) : Single<RequestToken> {
+    val tw = TwitterUtils.createTwitterClientInstance(context)
     return Single.create<RequestToken> {
       try {
         val requestToken = tw.getOAuthRequestToken(callBack)
@@ -59,10 +54,12 @@ class LoginUseCase @Inject constructor(
     }
   }
 
-  fun afterAuthorize(tw : Twitter, token : RequestToken, verifier : String) : Single<AccessToken> {
+  fun afterAuthorize(context: Context, requestToken : RequestToken, verifier : String) : Single<AccessToken> {
+    val tw = TwitterUtils.createTwitterClientInstance(context)
     return Single.create<AccessToken> {
       try {
-        it.onSuccess(tw.getOAuthAccessToken(token, verifier))
+        val token = tw.getOAuthAccessToken(requestToken, verifier)
+        it.onSuccess(token)
       } catch (e: TwitterException) {
         it.onError(e)
         e.printStackTrace()

@@ -9,6 +9,7 @@ import com.godslew.core.android.state.AppState
 import com.godslew.core.android.store.AppStore
 import com.godslew.core.domain.usecase.LoginUseCase
 import com.godslew.core.java.entity.Account
+import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jakewharton.rxrelay2.PublishRelay
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -25,9 +26,9 @@ class TwitterLoginViewModel @Inject constructor(
 
   private val disposable = CompositeDisposable()
 
-  val requestToken: PublishRelay<RequestToken> = PublishRelay.create()
-  val account : PublishRelay<Account> = PublishRelay.create()
-  val errorMessage : PublishRelay<String> = PublishRelay.create()
+  val requestToken: BehaviorRelay<RequestToken> = BehaviorRelay.create()
+  val account: PublishRelay<Account> = PublishRelay.create()
+  val errorMessage: PublishRelay<String> = PublishRelay.create()
 
   override fun onCleared() {
     disposable.dispose()
@@ -35,8 +36,7 @@ class TwitterLoginViewModel @Inject constructor(
   }
 
   fun startAuthorize(callBack: String) {
-    val tw = loginUseCase.createTwitterClientInstance(getApplication())
-    loginUseCase.startAuthorize(tw, callBack)
+    loginUseCase.startAuthorize(getApplication(), callBack)
       .subscribeOn(Schedulers.newThread())
       .observeOn(AndroidSchedulers.mainThread())
       .doOnError { errorMessage.accept(it.message) }
@@ -44,15 +44,19 @@ class TwitterLoginViewModel @Inject constructor(
       .addTo(disposable)
   }
 
-  fun afterAuthorize(verifier : String) {
-    val tw = loginUseCase.createTwitterClientInstance(getApplication())
-    loginUseCase.afterAuthorize(tw, requestToken.blockingFirst(), verifier)
+  fun afterAuthorize(verifier: String) {
+    loginUseCase.afterAuthorize(getApplication(), requestToken.value, verifier)
       .subscribeOn(Schedulers.newThread())
       .observeOn(AndroidSchedulers.mainThread())
       .doOnError { errorMessage.accept(it.message) }
-      .bindTo { account.accept( Account(it.token, it.tokenSecret, it) ) }
+      .bindTo {
+        account.accept(loginUseCase.createAccount(getApplication(), it))
+      }
       .addTo(disposable)
   }
 
+  fun registerAccount(account: Account) {
+
+  }
 
 }

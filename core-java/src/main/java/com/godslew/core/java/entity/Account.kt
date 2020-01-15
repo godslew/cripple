@@ -12,4 +12,12 @@ data class Account(
       return Account("", "", AccessToken("", ""))
     }
   }
+
+  fun userId() : Long {
+    return accessToken.userId
+  }
+
+  fun screenname() : String {
+    return accessToken.screenName
+  }
 }
