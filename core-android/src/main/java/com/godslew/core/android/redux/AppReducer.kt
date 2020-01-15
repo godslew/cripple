@@ -12,7 +12,7 @@ object AppReducer : Reducer<AppState, AppAction> {
       }
       is AppAction.AccountAction -> {
         when(action) {
-          is AppAction.AccountAction.RegisterAction -> state.copy(accountList = state.accountList.plus(action.account))
+          is AppAction.AccountAction.RegisterAction -> state.copy(accountList = action.accounts)
           is AppAction.AccountAction.ChangeAction -> state.copy(current = action.account)
           is AppAction.AccountAction.Load -> state.copy(accountList = action.accounts)
         }

@@ -1,9 +1,7 @@
 package com.godslew.core.domain.usecase
 
 import android.content.Context
-import com.godslew.core.android.action.AppAction
 import com.godslew.core.android.entity.Accounts
-import com.godslew.core.android.redux.AppDispatcher
 import com.godslew.core.android.scope.AppScope
 import com.godslew.core.android.utils.TwitterUtils
 import com.godslew.core.java.entity.Account
@@ -18,16 +16,19 @@ import javax.inject.Inject
 class LoginUseCase @Inject constructor(
   private val settingPreferences: SettingPreferences
 ) {
+
+  companion object {
+    private const val AccountsStoreName = "cripple_accounts"
+  }
+
   fun hasLoginSession(): Single<Boolean> {
     return Single.create {
       val accounts = settingPreferences.load(AccountsStoreName, Accounts::class.java)
       if (accounts == null) {
-        AppDispatcher.dispatch(AppAction.AccountAction.Load(Accounts.initialize().list))
         it.onSuccess(false)
         return@create
       }
       it.onSuccess(accounts.list.isNotEmpty())
-      AppDispatcher.dispatch(AppAction.AccountAction.Load(accounts.list))
     }
   }
 
@@ -37,9 +38,6 @@ class LoginUseCase @Inject constructor(
     return Account(consumerKey, consumerSecret, accessToken)
   }
 
-  companion object {
-    private const val AccountsStoreName = "cripple_accounts"
-  }
 
   fun startAuthorize(context: Context, callBack : String) : Single<RequestToken> {
     val tw = TwitterUtils.createTwitterClientInstance(context)
@@ -65,5 +63,39 @@ class LoginUseCase @Inject constructor(
         e.printStackTrace()
       }
     }
+  }
+
+  fun registerAccount(account: Account) : Single<List<Account>> {
+    return Single.create { emitter ->
+      // 登録済みのアカウントのリストを取得
+      val accounts = settingPreferences.load(AccountsStoreName, Accounts::class.java)
+      // 初回登録の場合
+      if (accounts == null) {
+        val list = listOf(account)
+        saveAccount(list)
+        emitter.onSuccess(list)
+        return@create
+      }
+      val list = accounts.list
+      // アカウントを全て消してしまった場合
+      if (list.isEmpty()) {
+        val l = listOf(account)
+        saveAccount(l)
+        emitter.onSuccess(l)
+        return@create
+      }
+      // 未登録登アカウントの場合
+      if (list.firstOrNull{it.userId() == account.userId()} == null) {
+        saveAccount(list)
+        emitter.onSuccess(list.plus(account))
+        return@create
+      }
+      // 登録済みのアカウントの場合
+      emitter.onSuccess(list)
+    }
+  }
+
+  private fun saveAccount(accounts: List<Account>) {
+    settingPreferences.save(AccountsStoreName, Accounts(accounts))
   }
 }

@@ -55,7 +55,12 @@ class MainActivity : BaseActivity() {
   private fun setup() {
     viewModel.isLogin
       .bindTo {
-        startActivityForResult(TwitterLoginActivity.createIntent(this), Constants.RequestCodes.TwitterLogin)
+        if (it.not()) {
+          startActivityForResult(
+            TwitterLoginActivity.createIntent(this),
+            Constants.RequestCodes.TwitterLogin
+          )
+        }
     }
       .addTo(disposable)
 

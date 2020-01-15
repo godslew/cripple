@@ -4,9 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import com.godslew.core.android.action.AppAction
 import com.godslew.core.android.extensions.bindTo
-import com.godslew.core.android.redux.AppReducer
-import com.godslew.core.android.state.AppState
-import com.godslew.core.android.store.AppStore
+import com.godslew.core.android.redux.AppDispatcher
 import com.godslew.core.domain.usecase.LoginUseCase
 import com.godslew.core.java.entity.Account
 import com.jakewharton.rxrelay2.BehaviorRelay
@@ -20,7 +18,6 @@ import javax.inject.Inject
 
 class TwitterLoginViewModel @Inject constructor(
   application: Application,
-  private val appStore: AppStore<AppState, AppAction, AppReducer>,
   private val loginUseCase: LoginUseCase
 ) : AndroidViewModel(application) {
 
@@ -28,6 +25,7 @@ class TwitterLoginViewModel @Inject constructor(
 
   val requestToken: BehaviorRelay<RequestToken> = BehaviorRelay.create()
   val account: PublishRelay<Account> = PublishRelay.create()
+  val finishRegistered : PublishRelay<Unit> = PublishRelay.create()
   val errorMessage: PublishRelay<String> = PublishRelay.create()
 
   override fun onCleared() {
@@ -56,7 +54,14 @@ class TwitterLoginViewModel @Inject constructor(
   }
 
   fun registerAccount(account: Account) {
-
+    loginUseCase.registerAccount(account)
+      .subscribeOn(Schedulers.newThread())
+      .observeOn(AndroidSchedulers.mainThread())
+      .bindTo {
+        AppDispatcher.dispatch(AppAction.AccountAction.RegisterAction(it))
+        finishRegistered.accept(Unit)
+      }
+      .addTo(disposable)
   }
 
 }

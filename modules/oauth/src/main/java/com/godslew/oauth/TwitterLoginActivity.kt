@@ -7,11 +7,9 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
-import com.godslew.core.android.action.AppAction
 import com.godslew.core.android.extensions.bindTo
 import com.godslew.core.android.factory.ViewModelFactory
 import com.godslew.core.android.presenter.BaseActivity
-import com.godslew.core.android.redux.AppDispatcher
 import com.godslew.oauth.databinding.ActivityTwitterLoginBinding
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
@@ -60,7 +58,11 @@ class TwitterLoginActivity : BaseActivity() {
     viewModel.account
       .bindTo {
         showToast(getString(R.string.twitter_oauth_success))
-        AppDispatcher.dispatch(AppAction.AccountAction.RegisterAction(it))
+        viewModel.registerAccount(it)
+      }.addTo(disposable)
+
+    viewModel.finishRegistered
+      .bindTo {
         finish()
       }.addTo(disposable)
 
