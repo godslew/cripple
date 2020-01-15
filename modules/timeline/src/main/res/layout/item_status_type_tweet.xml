@@ -6,13 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorPrimary">
-    <ImageView
+    <com.makeramen.roundedimageview.RoundedImageView
       android:id="@+id/icon"
       android:layout_width="48dp"
       android:layout_height="48dp"
       android:background="@mipmap/ic_launcher"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
+      android:scaleType="centerCrop"
+      app:riv_mutate_background="true"
+      app:riv_oval="true"
       android:layout_marginTop="8dp"
       android:layout_marginBottom="8dp"
       android:layout_marginStart="8dp"

@@ -1,24 +1,22 @@
 package com.godslew.cripple.presenter
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI.setupWithNavController
+import com.godslew.core.android.action.AppAction
 import com.godslew.core.android.extensions.bindTo
 import com.godslew.core.android.factory.ViewModelFactory
 import com.godslew.cripple.R
 import com.godslew.cripple.databinding.ActivityMainBinding
 import com.godslew.core.android.presenter.BaseActivity
+import com.godslew.core.android.redux.AppDispatcher
 import com.godslew.core.java.Constants
 import com.godslew.tweet.TweetActivity
 import com.godslew.gksettingpreferences.SettingPreferences
 import com.godslew.oauth.TwitterLoginActivity
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
-import timber.log.Timber
 import javax.inject.Inject
 
 class MainActivity : BaseActivity() {
@@ -53,25 +51,19 @@ class MainActivity : BaseActivity() {
   }
 
   private fun setup() {
-    viewModel.isLogin
+    viewModel.loadedAccounts
       .bindTo {
-        if (it.not()) {
+        if (it.isNotEmpty()) {
+          AppDispatcher.dispatch(AppAction.AccountAction.ChangeCurrentAction(it.first()))
+          AppDispatcher.dispatch(AppAction.AccountAction.Load(it))
+        } else {
           startActivityForResult(
             TwitterLoginActivity.createIntent(this),
             Constants.RequestCodes.TwitterLogin
           )
         }
-    }
-      .addTo(disposable)
+    }.addTo(disposable)
 
     viewModel.setup()
-  }
-
-  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-    super.onActivityResult(requestCode, resultCode, data)
-
-    if (resultCode != Activity.RESULT_OK || data == null) {
-      return
-    }
   }
 }

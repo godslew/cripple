@@ -41,6 +41,7 @@ dependencies {
   implementation libs.view.groupie.databinding
   implementation libs.view.skeleton
   implementation libs.view.shimmerlayout
+  implementation libs.view.roundedimageview
 
   //infra
   implementation libs.gk.settingpreferences

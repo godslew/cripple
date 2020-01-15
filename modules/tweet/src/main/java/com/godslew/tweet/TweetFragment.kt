@@ -29,10 +29,11 @@ class TweetFragment : BaseFragment() {
 
   private lateinit var binding: FragmentTweetBinding
   private lateinit var text: String
-  @Inject
-  lateinit var twitter: Twitter
 
-  @Inject internal lateinit var factory: ViewModelFactory<TweetViewModel>
+  @Inject
+  internal lateinit var twitter: Twitter
+  @Inject
+  internal lateinit var factory: ViewModelFactory<TweetViewModel>
   private val viewModel: TweetViewModel by viewModels { factory }
 
 
@@ -50,11 +51,10 @@ class TweetFragment : BaseFragment() {
     binding.buttonTweet.isEnabled = false
     binding.buttonTweet.setOnClickListener {
       viewModel.postTweet(requireContext(), text)
-      println(twitter)
-      activity?.finish()
+      requireActivity().finish()
     }
     binding.closeTweet.setOnClickListener {
-      activity?.finish()
+      requireActivity().finish()
     }
 
     binding.textTweet.addTextChangedListener((object:

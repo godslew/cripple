@@ -7,7 +7,7 @@ import twitter4j.Status
 sealed class AppAction : ActionType {
   sealed class AccountAction : AppAction() {
     data class RegisterAction(val accounts : List<Account>) : AccountAction()
-    data class ChangeAction(val account: Account) : AccountAction()
+    data class ChangeCurrentAction(val account: Account) : AccountAction()
     data class Load(val accounts : List<Account>) : AccountAction()
   }
   sealed class SessionAction : AppAction() {

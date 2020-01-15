@@ -11,17 +11,20 @@ object TwitterUtils {
   fun createTwitterClientInstance(context: Context): Twitter {
     val keyPair = clientKey(context)
     val (consumerKey, consumerSecret) = keyPair
+    return createTwitterInstance(consumerKey, consumerSecret)
+  }
 
+  private fun createTwitterInstance(ck : String, cs : String) : Twitter {
     val factory = TwitterFactory()
     val twitter = factory.instance
-    twitter.setOAuthConsumer(consumerKey, consumerSecret)
+    twitter.setOAuthConsumer(ck, cs)
     twitter.oAuthAccessToken = null
     return twitter
   }
 
-  // 認証用のインスタンスを生成
-  fun createTwitterInstance(context: Context, account : Account): Twitter {
-    val twitter = createTwitterClientInstance(context)
+  // APIアクセス用のインスタンスを生成
+  fun createTwitter(account : Account): Twitter {
+    val twitter = createTwitterInstance(account.consumerKey, account.consumerSecret)
     twitter.oAuthAccessToken = account.accessToken
     return twitter
   }

@@ -21,14 +21,14 @@ class LoginUseCase @Inject constructor(
     private const val AccountsStoreName = "cripple_accounts"
   }
 
-  fun hasLoginSession(): Single<Boolean> {
+  fun loadAccounts(): Single<List<Account>> {
     return Single.create {
       val accounts = settingPreferences.load(AccountsStoreName, Accounts::class.java)
       if (accounts == null) {
-        it.onSuccess(false)
+        it.onSuccess(mutableListOf())
         return@create
       }
-      it.onSuccess(accounts.list.isNotEmpty())
+      it.onSuccess(accounts.list)
     }
   }
 

@@ -59,6 +59,9 @@ class TwitterLoginViewModel @Inject constructor(
       .observeOn(AndroidSchedulers.mainThread())
       .bindTo {
         AppDispatcher.dispatch(AppAction.AccountAction.RegisterAction(it))
+        if (it.size == 1) {
+          AppDispatcher.dispatch(AppAction.AccountAction.ChangeCurrentAction(it.first()))
+        }
         finishRegistered.accept(Unit)
       }
       .addTo(disposable)
