@@ -41,7 +41,7 @@ class AccountRepository @Inject constructor(
         emitter.onSuccess(l)
         return@create
       }
-      // 未登録登アカウントの場合
+      // 未登録アカウントの場合
       if (list.firstOrNull{it.userId() == account.userId()} == null) {
         saveAccount(list)
         emitter.onSuccess(list.plus(account))
