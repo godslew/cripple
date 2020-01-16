@@ -8,8 +8,8 @@
     android:label="TimelineFragment"/>
 
   <fragment android:id="@+id/nav_account"
-    android:name="com.godslew.timeline.TimelineFragment"
-    android:label="TimelineFragment"/>
+    android:name="com.godslew.account.AccountFragment"
+    android:label="AccountFragment"/>
 
   <fragment android:id="@+id/nav_setting"
     android:name="com.godslew.timeline.TimelineFragment"
