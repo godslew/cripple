@@ -7,9 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.godslew.account.databinding.FragmentAccountBinding
 import com.godslew.core.android.action.AppAction
+import com.godslew.core.android.extensions.bindTo
 import com.godslew.core.android.factory.ViewModelFactory
 import com.godslew.core.android.presenter.BaseFragment
 import com.godslew.core.android.redux.AppDispatcher
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import javax.inject.Inject
 
 
@@ -18,6 +22,8 @@ class AccountFragment : BaseFragment() {
   companion object {
     fun newInstance() = AccountFragment()
   }
+
+  private val disposable = CompositeDisposable()
 
   @Inject
   internal lateinit var factory: ViewModelFactory<AccountViewModel>
@@ -35,11 +41,21 @@ class AccountFragment : BaseFragment() {
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
     AppDispatcher.dispatch(AppAction.AppViewAction.MainViewAction.DisplayTweetButtonAction(false))
+    setup()
   }
 
   override fun onResume() {
-    AppDispatcher.dispatch(AppAction.AppViewAction.MainViewAction.DisplayTweetButtonAction(false))
     super.onResume()
+  }
+
+  private fun setup() {
+    viewModel.accounts
+      .observeOn(AndroidSchedulers.mainThread())
+      .bindTo {
+
+      }.addTo(disposable)
+
+    viewModel.setup()
   }
 
 }

@@ -57,7 +57,6 @@ class TimelineFragment : BaseFragment() {
   }
 
   override fun onResume() {
-    AppDispatcher.dispatch(AppAction.AppViewAction.MainViewAction.DisplayTweetButtonAction(true))
     super.onResume()
   }
 
