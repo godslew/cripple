@@ -1,2 +1,5 @@
 # cripple
-青い鳥
+
+## Description
+This client of the godslew, by the godslew, for the godslew.
+
