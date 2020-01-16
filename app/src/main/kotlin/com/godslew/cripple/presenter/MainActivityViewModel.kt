@@ -42,7 +42,7 @@ class MainActivityViewModel @Inject constructor(
 
     appStore
       .observable()
-      .map { it.isShowTweetButton }
+      .map { it.viewState.mainViewState.isShowTweetButton }
       .distinctUntilChanged()
       .observeOn(AndroidSchedulers.mainThread())
       .subscribeOn(Schedulers.io())

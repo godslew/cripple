@@ -34,11 +34,11 @@ class AccountFragment : BaseFragment() {
 
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
-    AppDispatcher.dispatch(AppAction.MainViewAction.DisplayTweetButtonAction(false))
+    AppDispatcher.dispatch(AppAction.AppViewAction.MainViewAction.DisplayTweetButtonAction(false))
   }
 
   override fun onResume() {
-    AppDispatcher.dispatch(AppAction.MainViewAction.DisplayTweetButtonAction(false))
+    AppDispatcher.dispatch(AppAction.AppViewAction.MainViewAction.DisplayTweetButtonAction(false))
     super.onResume()
   }
 

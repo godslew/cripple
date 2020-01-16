@@ -36,7 +36,7 @@ class TimelineFragment : BaseFragment() {
 
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
-    AppDispatcher.dispatch(AppAction.MainViewAction.DisplayTweetButtonAction(true))
+    AppDispatcher.dispatch(AppAction.AppViewAction.MainViewAction.DisplayTweetButtonAction(true))
     with(binding) {
       pager.adapter = TimelineAdapter(
         requireActivity(), listOf(
@@ -57,7 +57,7 @@ class TimelineFragment : BaseFragment() {
   }
 
   override fun onResume() {
-    AppDispatcher.dispatch(AppAction.MainViewAction.DisplayTweetButtonAction(true))
+    AppDispatcher.dispatch(AppAction.AppViewAction.MainViewAction.DisplayTweetButtonAction(true))
     super.onResume()
   }
 
