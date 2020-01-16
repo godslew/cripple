@@ -2,6 +2,7 @@ package com.godslew.cripple.presenter
 
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.godslew.core.android.action.AppAction
@@ -63,6 +64,11 @@ class MainActivity : BaseActivity() {
           )
         }
     }.addTo(disposable)
+
+    viewModel.isShowTweetButton
+      .bindTo {
+        binding.fab.isVisible = it
+      }
 
     viewModel.setup()
   }

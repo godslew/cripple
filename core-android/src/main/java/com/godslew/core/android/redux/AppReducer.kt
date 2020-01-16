@@ -17,6 +17,7 @@ object AppReducer : Reducer<AppState, AppAction> {
           is AppAction.AccountAction.Load -> state.copy(accountList = action.accounts)
         }
       }
+      is AppAction.MainViewAction.DisplayTweetButtonAction -> state.copy(isShowTweetButton = action.isShow)
     }
   }
 }

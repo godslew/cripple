@@ -15,4 +15,7 @@ sealed class AppAction : ActionType {
       data class SendTweet(val status: Status) : TweetAction()
     }
   }
+  sealed class MainViewAction : AppAction() {
+    data class DisplayTweetButtonAction(val isShow : Boolean) : MainViewAction()
+  }
 }

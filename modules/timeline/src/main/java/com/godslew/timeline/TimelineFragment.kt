@@ -5,9 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import com.godslew.core.android.action.AppAction
+import com.godslew.core.android.app.AppRouterType
 import com.godslew.core.android.entity.TimelinePage
 import com.godslew.core.android.factory.ViewModelFactory
 import com.godslew.core.android.presenter.BaseFragment
+import com.godslew.core.android.redux.AppDispatcher
 import com.godslew.core.java.entity.Account
 import com.godslew.core.java.value.PageType
 import com.godslew.timeline.databinding.TimelineFragmentBinding
@@ -16,6 +19,8 @@ import javax.inject.Inject
 
 class TimelineFragment : BaseFragment() {
 
+  @Inject
+  internal lateinit var appRouter: AppRouterType
   @Inject internal lateinit var factory: ViewModelFactory<TimelineViewModel>
   private val viewModel: TimelineViewModel by viewModels { factory }
 
@@ -31,6 +36,7 @@ class TimelineFragment : BaseFragment() {
 
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
+    AppDispatcher.dispatch(AppAction.MainViewAction.DisplayTweetButtonAction(true))
     with(binding) {
       pager.adapter = TimelineAdapter(
         requireActivity(), listOf(
@@ -48,6 +54,11 @@ class TimelineFragment : BaseFragment() {
       // binding.pager.postDelayed({ skeletonScreen.hide() }, 3000)
     }
     return
+  }
+
+  override fun onResume() {
+    AppDispatcher.dispatch(AppAction.MainViewAction.DisplayTweetButtonAction(true))
+    super.onResume()
   }
 
 }
