@@ -7,8 +7,9 @@ import twitter4j.TwitterException
 import twitter4j.User
 import twitter4j.auth.AccessToken
 import twitter4j.auth.RequestToken
+import javax.inject.Inject
 
-class TwitterRepository {
+class TwitterRepository @Inject constructor() {
   fun updateStatus(twitter : Twitter, text : String) : Single<CrippleStatus> {
     return Single.create {
       try {

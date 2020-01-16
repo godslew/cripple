@@ -7,7 +7,6 @@ import com.godslew.core.android.action.AppAction
 import com.godslew.core.android.app.AppRouterType
 import com.godslew.core.android.redux.AppReducer
 import com.godslew.core.android.state.AppState
-import com.godslew.core.domain.repository.AccountRepository
 import com.godslew.core.domain.repository.TwitterRepository
 import com.godslew.cripple.application.AppRouter
 import com.godslew.gksettingpreferences.SettingPreferences
@@ -44,10 +43,5 @@ class AppModule(
   @Provides
   fun provideAppRouterType(): AppRouterType {
     return AppRouter()
-  }
-
-  @Provides
-  fun provideTwitterRepository() : TwitterRepository {
-    return TwitterRepository()
   }
 }
