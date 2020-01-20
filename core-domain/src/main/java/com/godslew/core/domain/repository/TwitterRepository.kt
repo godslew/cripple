@@ -2,6 +2,7 @@ package com.godslew.core.domain.repository
 
 import com.godslew.core.java.entity.CrippleStatus
 import io.reactivex.Single
+import twitter4j.Paging
 import twitter4j.Twitter
 import twitter4j.TwitterException
 import twitter4j.User
@@ -27,6 +28,44 @@ class TwitterRepository @Inject constructor() {
       try {
         val user = twitter.verifyCredentials()
         it.onSuccess(user)
+      } catch (e : TwitterException) {
+        it.onError(e)
+        e.printStackTrace()
+      }
+    }
+  }
+
+  fun getHomeTimeline(twitter: Twitter, paging : Paging) : Single<List<CrippleStatus>> {
+    return Single.create {
+      try {
+        val list = twitter.getHomeTimeline(paging)
+        val id = twitter.id
+        it.onSuccess(list.map { status ->  CrippleStatus(status, id) })
+      } catch (e : TwitterException) {
+        it.onError(e)
+        e.printStackTrace()
+      }
+    }
+  }
+
+  fun getFavorites(twitter: Twitter, id: Long, paging : Paging) : Single<List<CrippleStatus>> {
+    return Single.create {
+      try {
+        val list = twitter.getFavorites(id, paging)
+        it.onSuccess(list.map { status -> CrippleStatus(status, id) })
+      } catch (e : TwitterException) {
+        it.onError(e)
+        e.printStackTrace()
+      }
+    }
+  }
+
+  fun getMentions(twitter: Twitter, paging : Paging) : Single<List<CrippleStatus>> {
+    return Single.create {
+      try {
+        val list = twitter.getMentionsTimeline(paging)
+        val id = twitter.id
+        it.onSuccess(list.map { status -> CrippleStatus(status, id) })
       } catch (e : TwitterException) {
         it.onError(e)
         e.printStackTrace()
