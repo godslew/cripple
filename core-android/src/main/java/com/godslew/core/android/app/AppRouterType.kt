@@ -7,4 +7,8 @@ interface AppRouterType {
   fun getTweetActivity(
     context: Context
   ) : Intent
+
+  fun getOAuthActivity(
+    context: Context
+  ) : Intent
 }

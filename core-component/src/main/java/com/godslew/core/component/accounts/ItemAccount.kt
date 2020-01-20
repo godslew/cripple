@@ -12,6 +12,9 @@ class ItemAccount(
   override fun getLayout(): Int = R.layout.item_account
 
   override fun bind(viewBinding: ItemAccountBinding, position: Int) {
+    with(viewBinding) {
+      this.screenName.text = account.screenname()
+    }
 
   }
 

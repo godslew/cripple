@@ -5,12 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.godslew.account.databinding.FragmentAccountBinding
 import com.godslew.core.android.action.AppAction
+import com.godslew.core.android.app.AppRouterType
 import com.godslew.core.android.extensions.bindTo
 import com.godslew.core.android.factory.ViewModelFactory
 import com.godslew.core.android.presenter.BaseFragment
 import com.godslew.core.android.redux.AppDispatcher
+import com.godslew.core.component.accounts.ItemAccount
+import com.godslew.core.component.accounts.ItemAddAccount
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.GroupieViewHolder
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
@@ -24,6 +31,9 @@ class AccountFragment : BaseFragment() {
   }
 
   private val disposable = CompositeDisposable()
+
+  @Inject
+  internal lateinit var appRouter: AppRouterType
 
   @Inject
   internal lateinit var factory: ViewModelFactory<AccountViewModel>
@@ -49,10 +59,24 @@ class AccountFragment : BaseFragment() {
   }
 
   private fun setup() {
+    val addAccount : () -> Unit = {
+      startActivity(appRouter.getOAuthActivity(requireContext()))
+    }
     viewModel.accounts
       .observeOn(AndroidSchedulers.mainThread())
       .bindTo {
-
+        val accounts = it.map { ac -> ItemAccount(ac) }
+        val addItem = ItemAddAccount(addAccount)
+        val currentAdapter = binding.list.adapter
+        if (currentAdapter is GroupAdapter) {
+          currentAdapter.updateAsync(accounts + addItem)
+        }else {
+          val manager = LinearLayoutManager(context)
+          val adapter = GroupAdapter<GroupieViewHolder>()
+          binding.list.layoutManager = manager
+          binding.list.adapter = adapter
+          adapter.updateAsync(accounts + addItem)
+        }
       }.addTo(disposable)
 
     viewModel.setup()
