@@ -42,7 +42,7 @@ class LoginUseCase @Inject constructor(
     return accountRepository.registerAccount(account)
   }
 
-  private fun saveAccount(accounts: List<Account>) {
+  fun saveAccount(accounts: List<Account>) {
     accountRepository.saveAccount(accounts)
   }
 }

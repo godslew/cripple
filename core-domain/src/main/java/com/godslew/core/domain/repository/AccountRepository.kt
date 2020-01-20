@@ -29,7 +29,6 @@ class AccountRepository @Inject constructor(
       // 初回登録の場合
       if (accounts == null) {
         val list = listOf(account)
-        saveAccount(list)
         emitter.onSuccess(list)
         return@create
       }
@@ -37,13 +36,11 @@ class AccountRepository @Inject constructor(
       // アカウントを全て消してしまった場合
       if (list.isEmpty()) {
         val l = listOf(account)
-        saveAccount(l)
         emitter.onSuccess(l)
         return@create
       }
       // 未登録アカウントの場合
       if (list.firstOrNull{it.userId() == account.userId()} == null) {
-        saveAccount(list.plus(account))
         emitter.onSuccess(list.plus(account))
         return@create
       }

@@ -58,6 +58,7 @@ class TwitterLoginViewModel @Inject constructor(
       .subscribeOn(Schedulers.newThread())
       .observeOn(AndroidSchedulers.mainThread())
       .bindTo {
+        loginUseCase.saveAccount(it)
         AppDispatcher.dispatch(AppAction.AccountAction.RegisterAction(it))
         if (it.size == 1) {
           AppDispatcher.dispatch(AppAction.AccountAction.ChangeCurrentAction(it.first()))
