@@ -40,6 +40,9 @@ ext.versions = [
   twitter4j     : '4.0.7',
   twitter4jmedia: '4.0.6',
 
+  // image
+  glide         : '4.11.0',
+
   // View
   view          : [
     groupie         : '2.7.0',
@@ -133,6 +136,12 @@ ext.libs = [
     stream: "org.twitter4j:twitter4j-stream:${versions.twitter4j}",
     async : "org.twitter4j:twitter4j-async:${versions.twitter4j}",
     media : "org.twitter4j:twitter4j-media-support:${versions.twitter4jmedia}",
+  ],
+  image      : [
+    glide: [
+      core      : "com.github.bumptech.glide:glide:${versions.glide}",
+      annotation: "com.github.bumptech.glide:compiler:${versions.glide}"
+    ]
   ],
   rx2        : [
     java    : "io.reactivex.rxjava2:rxjava:${versions.rx2.java}",
