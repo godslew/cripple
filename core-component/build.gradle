@@ -17,9 +17,28 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
   }
+  dataBinding {
+    enabled = true
+  }
 }
 
 dependencies {
   api project(':core-android')
+
+  implementation libs.androidx.appcompat
+  implementation libs.androidx.corektx
+  implementation libs.androidx.fragmentktx
+
+  // external library
+  // ui
+  implementation libs.view.material
+  implementation libs.androidx.constraintlayout
+
+  // view
+  implementation libs.view.groupie.core
+  implementation libs.view.groupie.databinding
+  implementation libs.view.skeleton
+  implementation libs.view.shimmerlayout
+  implementation libs.view.roundedimageview
 
 }
