@@ -7,7 +7,7 @@ import com.godslew.core.java.entity.Account
 data class AppState(
   val current : Account,
   val accountList: List<Account>,
-  val sessionState: SessionState,
+  val accountStates: List<AccountState>,
   val viewState: AppViewState
 ) : StateType {
   companion object {
@@ -15,7 +15,7 @@ data class AppState(
       return AppState(
         Account.initialize(),
         accountList = emptyList(),
-        sessionState = SessionState.initial(),
+        accountStates = emptyList(),
         viewState = AppViewState.initial()
       )
     }

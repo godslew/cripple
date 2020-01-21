@@ -6,6 +6,7 @@ import com.godslew.core.android.action.AppAction
 import com.godslew.core.android.extensions.bindTo
 import com.godslew.core.android.redux.AppDispatcher
 import com.godslew.core.domain.usecase.LoginUseCase
+import com.godslew.core.domain.usecase.TimelineUseCase
 import com.godslew.core.java.entity.Account
 import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jakewharton.rxrelay2.PublishRelay
@@ -18,7 +19,8 @@ import javax.inject.Inject
 
 class TwitterLoginViewModel @Inject constructor(
   application: Application,
-  private val loginUseCase: LoginUseCase
+  private val loginUseCase: LoginUseCase,
+  private val timelineUseCase: TimelineUseCase
 ) : AndroidViewModel(application) {
 
   private val disposable = CompositeDisposable()
@@ -62,6 +64,8 @@ class TwitterLoginViewModel @Inject constructor(
         AppDispatcher.dispatch(AppAction.AccountAction.RegisterAction(it))
         if (it.size == 1) {
           // 1つめのアカウント登録の時にだけ行う
+          val timelinePages =  timelineUseCase.initializeTimeline(account)
+          timelineUseCase.saveTimeline(timelinePages)
 
           AppDispatcher.dispatch(AppAction.AccountAction.ChangeCurrentAction(it.first()))
         }
