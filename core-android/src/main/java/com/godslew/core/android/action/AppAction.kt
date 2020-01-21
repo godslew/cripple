@@ -9,9 +9,9 @@ sealed class AppAction : ActionType {
   sealed class AccountAction : AppAction() {
     data class RegisterAction(val accounts : List<Account>) : AccountAction()
     data class ChangeCurrentAction(val account: Account) : AccountAction()
-    data class LoadAction(val accounts : List<Account>) : AccountAction()
+    data class LoadAccountAction(val accounts : List<Account>) : AccountAction()
+    data class LoadTimelineAction(val pages : List<TimelinePage>) : AccountAction()
     sealed class TimelineAction : AccountAction() {
-      data class LoadAction(val pages : List<TimelinePage>) : TimelineAction()
       data class AddAction(val page : TimelinePage) : TimelineAction()
       data class RemoveAction(val page : TimelinePage) : TimelineAction()
       sealed class StatusAction : TimelineAction() {

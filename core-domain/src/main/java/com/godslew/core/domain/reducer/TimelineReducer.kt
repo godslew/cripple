@@ -11,18 +11,13 @@ object TimelineReducer : Reducer<AccountState, AppAction.AccountAction.TimelineA
     action: AppAction.AccountAction.TimelineAction
   ): AccountState {
     return when (action) {
-      is AppAction.AccountAction.TimelineAction.LoadAction -> state.copy(pages = action.pages.map {
-        TimelineState(
-          page = it.pageType,
-          statuses = mutableListOf()
-        )
-      })
       is AppAction.AccountAction.TimelineAction.AddAction ->
         if (state.account.userId() == action.page.account.userId()) {
           state.copy(
             pages = state.pages.plus(
               TimelineState(
                 page = action.page.pageType,
+                account = state.account,
                 statuses = mutableListOf()
               )
             )

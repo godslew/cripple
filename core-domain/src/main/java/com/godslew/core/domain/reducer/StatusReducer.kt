@@ -11,9 +11,20 @@ object StatusReducer : Reducer<TimelineState, AppAction.AccountAction.TimelineAc
     action: AppAction.AccountAction.TimelineAction.StatusAction
   ): TimelineState {
     return when (action) {
-      is AppAction.AccountAction.TimelineAction.StatusAction.AddBottomAction -> state.copy(statuses = action.statuses + state.statuses)
-      is AppAction.AccountAction.TimelineAction.StatusAction.AddTopAction -> state.copy(statuses = state.statuses + action.statuses)
-      is AppAction.AccountAction.TimelineAction.StatusAction.RefreshAction -> state.copy(statuses = state.statuses.map {
+      is AppAction.AccountAction.TimelineAction.StatusAction.AddBottomAction ->
+        if (state.account.userId() == action.statuses.firstOrNull()?.twitterID ?: 0) {
+          state.copy(statuses = (action.statuses + state.statuses).distinctBy { it.status.id })
+        } else {
+          state
+        }
+      is AppAction.AccountAction.TimelineAction.StatusAction.AddTopAction ->
+      if (state.account.userId() == action.statuses.firstOrNull()?.twitterID ?: 0) {
+        state.copy(statuses = (state.statuses + action.statuses).distinctBy { it.status.id })
+      } else {
+        state
+      }
+
+        is AppAction.AccountAction.TimelineAction.StatusAction.RefreshAction -> state.copy(statuses = state.statuses.map {
         if (it.status.id == action.status.status.id) {
           action.status
         } else {

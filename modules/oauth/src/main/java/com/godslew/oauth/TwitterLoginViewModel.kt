@@ -66,7 +66,7 @@ class TwitterLoginViewModel @Inject constructor(
           // 1つめのアカウント登録の時にだけ行う
           val timelinePages =  timelineUseCase.initializeTimeline(account)
           timelineUseCase.saveTimeline(timelinePages)
-
+          AppDispatcher.dispatch(AppAction.AccountAction.LoadTimelineAction(timelinePages))
           AppDispatcher.dispatch(AppAction.AccountAction.ChangeCurrentAction(it.first()))
         }
         finishRegistered.accept(Unit)
