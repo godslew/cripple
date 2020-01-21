@@ -3,15 +3,15 @@
   android:id="@+id/navigation_graph"
   app:startDestination="@id/nav_home">
 
-  <fragment android:id="@+id/nav_home"
+  <custom_fragment android:id="@+id/nav_home"
     android:name="com.godslew.timeline.TimelineFragment"
     android:label="TimelineFragment"/>
 
-  <fragment android:id="@+id/nav_account"
+  <custom_fragment android:id="@+id/nav_account"
     android:name="com.godslew.account.AccountFragment"
     android:label="AccountFragment"/>
 
-  <fragment android:id="@+id/nav_setting"
+  <custom_fragment android:id="@+id/nav_setting"
     android:name="com.godslew.timeline.TimelineFragment"
     android:label="TimelineFragment"/>
 </navigation>

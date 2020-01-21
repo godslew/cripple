@@ -2,6 +2,7 @@ package com.godslew.cripple.presenter
 
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.godslew.core.android.action.AppAction
@@ -55,7 +56,7 @@ class MainActivity : BaseActivity() {
       .bindTo {
         if (it.isNotEmpty()) {
           AppDispatcher.dispatch(AppAction.AccountAction.ChangeCurrentAction(it.first()))
-          AppDispatcher.dispatch(AppAction.AccountAction.LoadAction(it))
+          AppDispatcher.dispatch(AppAction.AccountAction.LoadAccountAction(it))
         } else {
           startActivityForResult(
             TwitterLoginActivity.createIntent(this),
