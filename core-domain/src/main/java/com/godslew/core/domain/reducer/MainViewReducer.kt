@@ -1,4 +1,4 @@
-package com.godslew.core.android.redux
+package com.godslew.core.domain.reducer
 
 import com.freeletics.rxredux.Reducer
 import com.godslew.core.android.action.AppAction

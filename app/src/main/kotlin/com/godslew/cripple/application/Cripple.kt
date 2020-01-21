@@ -1,6 +1,6 @@
 package com.godslew.cripple.application
 
-import com.godslew.core.android.store.AppStore
+import com.godslew.core.domain.store.AppStore
 import com.godslew.cripple.BuildConfig
 import com.godslew.cripple.di.component.AppComponent
 import com.godslew.cripple.di.component.DaggerAppComponent

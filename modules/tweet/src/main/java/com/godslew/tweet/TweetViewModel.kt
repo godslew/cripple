@@ -5,7 +5,7 @@ import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import com.godslew.core.android.extensions.bindTo
-import com.godslew.core.android.store.AppStore
+import com.godslew.core.domain.store.AppStore
 import com.godslew.core.domain.usecase.TwitterUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable

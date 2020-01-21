@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.godslew.core.android.presenter.BaseFragment
-import com.godslew.core.android.store.AppStore
+import com.godslew.core.domain.store.AppStore
 import com.godslew.core.java.entity.Account
 import com.godslew.timeline.databinding.FragmentHomeBinding
 import com.godslew.timeline.item.StatusItem

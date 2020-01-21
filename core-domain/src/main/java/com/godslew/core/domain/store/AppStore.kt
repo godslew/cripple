@@ -1,20 +1,21 @@
-package com.godslew.core.android.store
+package com.godslew.core.domain.store
 
 import com.godslew.core.android.action.AppAction
+import com.godslew.core.android.extensions.bindTo
 import com.godslew.core.android.redux.ActionType
 import com.godslew.core.android.redux.AppDispatcher
-import com.godslew.core.android.redux.AppReducer
 import com.godslew.core.domain.state.AppState
 import com.jakewharton.rxrelay2.BehaviorRelay
 import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 
 
 class AppStore (
   private val disposable: CompositeDisposable,
   private val initialState: AppState,
-  private val reducer: AppReducer
+  private val reducer: com.godslew.core.domain.reducer.AppReducer
 ) {
 
   private val relay = BehaviorRelay.createDefault(initialState)

@@ -3,7 +3,7 @@ package com.godslew.account
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import com.godslew.core.android.extensions.bindTo
-import com.godslew.core.android.store.AppStore
+import com.godslew.core.domain.store.AppStore
 import com.godslew.core.java.entity.Account
 import com.jakewharton.rxrelay2.PublishRelay
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -19,7 +19,7 @@ class AccountViewModel @Inject constructor(
 
   private val disposable = CompositeDisposable()
 
-  val accounts : PublishRelay<List<Account>> = PublishRelay.create()
+  val accounts: PublishRelay<List<Account>> = PublishRelay.create()
 
   override fun onCleared() {
     disposable.dispose()

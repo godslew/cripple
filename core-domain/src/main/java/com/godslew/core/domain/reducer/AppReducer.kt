@@ -1,4 +1,4 @@
-package com.godslew.core.android.redux
+package com.godslew.core.domain.reducer
 
 import com.freeletics.rxredux.Reducer
 import com.godslew.core.android.action.AppAction
@@ -8,7 +8,11 @@ object AppReducer : Reducer<AppState, AppAction> {
   override fun invoke(state: AppState, action: AppAction): AppState {
     return when (action) {
       is AppAction.SessionAction -> {
-        state.copy(sessionState = SessionReducer.invoke(state.sessionState, action))
+        state.copy(sessionState = SessionReducer.invoke(
+          state.sessionState,
+          action
+        )
+        )
       }
       is AppAction.AccountAction -> {
         when(action) {
@@ -17,7 +21,11 @@ object AppReducer : Reducer<AppState, AppAction> {
           is AppAction.AccountAction.Load -> state.copy(accountList = action.accounts)
         }
       }
-      is AppAction.AppViewAction -> state.copy(viewState = AppViewReducer.invoke(state.viewState, action))
+      is AppAction.AppViewAction -> state.copy(viewState = AppViewReducer.invoke(
+        state.viewState,
+        action
+      )
+      )
     }
   }
 }
