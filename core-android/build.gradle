@@ -41,6 +41,8 @@ dependencies {
 
   //infra
   api libs.gk.settingpreferences
+  api libs.image.glide.core
+  annotationProcessor libs.image.glide.annotation
 
   // debug
   api libs.debugging.timber

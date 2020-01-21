@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.godslew.account.databinding.FragmentAccountBinding
 import com.godslew.core.android.action.AppAction
 import com.godslew.core.android.app.AppRouterType
