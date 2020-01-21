@@ -16,24 +16,25 @@ class TimelineAdapter(
   }
 
   override fun createFragment(position: Int): Fragment {
-    return when (pages[position].pageType) {
+    val page = pages[position]
+    return when (page.pageType) {
       PageType.HOME -> {
-        HomeFragment()
+        HomeFragment(page.account)
       }
       PageType.MENTION -> {
-        HomeFragment()
+        HomeFragment(page.account)
       }
       PageType.LIKE -> {
-        HomeFragment()
+        HomeFragment(page.account)
       }
       PageType.DM -> {
-        HomeFragment()
+        HomeFragment(page.account)
       }
       PageType.SEARCH -> {
-        HomeFragment()
+        HomeFragment(page.account)
       }
       PageType.USER -> {
-        HomeFragment()
+        HomeFragment(page.account)
       }
     }
   }

@@ -1,10 +1,11 @@
 package com.godslew.core.android.store
 
-import com.freeletics.rxredux.Reducer
+import com.godslew.core.android.action.AppAction
 import com.godslew.core.android.extensions.bindTo
 import com.godslew.core.android.redux.ActionType
 import com.godslew.core.android.redux.AppDispatcher
-import com.godslew.core.android.redux.StateType
+import com.godslew.core.android.redux.AppReducer
+import com.godslew.core.android.state.AppState
 import com.jakewharton.rxrelay2.BehaviorRelay
 import io.reactivex.Observable
 import io.reactivex.Single
@@ -12,10 +13,10 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 
 
-class AppStore<STATE: StateType, ACTION: ActionType, REDUCER: Reducer<STATE, ACTION>> (
+class AppStore (
   private val disposable: CompositeDisposable,
-  private val initialState: STATE,
-  private val reducer: REDUCER
+  private val initialState: AppState,
+  private val reducer: AppReducer
 ) {
 
   private val relay = BehaviorRelay.createDefault(initialState)
@@ -24,25 +25,25 @@ class AppStore<STATE: StateType, ACTION: ActionType, REDUCER: Reducer<STATE, ACT
     AppDispatcher.on(ActionType::class.java)
       .map { action ->
         val state = relay.value
-        reducer.invoke(state, action as ACTION)
+        reducer.invoke(state, action as AppAction)
       }
       .bindTo { relay.accept(it) }
       .addTo(disposable)
   }
 
-  fun observable(): Observable<STATE> {
+  fun observable(): Observable<AppState> {
     return relay
   }
 
-  fun getState(): STATE {
+  fun getState(): AppState {
     return relay.value
   }
 
-  fun setState(state: STATE) {
+  fun setState(state: AppState) {
     relay.accept(state)
   }
 
-  fun single(): Single<STATE> {
+  fun single(): Single<AppState> {
     return observable().take(1).singleOrError()
   }
 

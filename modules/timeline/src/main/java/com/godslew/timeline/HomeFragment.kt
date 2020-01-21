@@ -6,14 +6,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.godslew.core.android.presenter.BaseFragment
+import com.godslew.core.android.store.AppStore
+import com.godslew.core.java.entity.Account
 import com.godslew.timeline.databinding.FragmentHomeBinding
 import com.godslew.timeline.item.StatusItem
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
+import javax.inject.Inject
 
-class HomeFragment : BaseFragment() {
+class HomeFragment(
+  private val account: Account
+) : BaseFragment() {
 
   private lateinit var binding: FragmentHomeBinding
+
+  @Inject
+  internal lateinit var appStore: AppStore
 
   override fun onCreateView(
     inflater: LayoutInflater,

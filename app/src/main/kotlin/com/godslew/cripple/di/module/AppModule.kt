@@ -32,7 +32,7 @@ class AppModule(
 
   @AppScope
   @Provides
-  fun provideAppStore(): AppStore<AppState, AppAction, AppReducer> {
+  fun provideAppStore(): AppStore {
     return AppStore(
       disposable = CompositeDisposable(),
       initialState = AppState.initial(),
