@@ -11,7 +11,10 @@ object AppReducer : Reducer<AppState, AppAction> {
         when(action) {
           is AppAction.AccountAction.RegisterAction -> state.copy(accountList = action.accounts)
           is AppAction.AccountAction.ChangeCurrentAction -> state.copy(current = action.account)
-          is AppAction.AccountAction.Load -> state.copy(accountList = action.accounts)
+          is AppAction.AccountAction.LoadAction -> state.copy(accountList = action.accounts)
+          is AppAction.AccountAction.TimelineAction -> {
+            state.copy(accountStates = state.accountStates.map { TimelineReducer.invoke(it, action) })
+          }
         }
       }
       is AppAction.AppViewAction -> state.copy(viewState = AppViewReducer.invoke(

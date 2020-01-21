@@ -3,16 +3,22 @@ package com.godslew.core.android.action
 import com.godslew.core.android.entity.TimelinePage
 import com.godslew.core.android.redux.ActionType
 import com.godslew.core.java.entity.Account
-import twitter4j.Status
+import com.godslew.core.java.entity.CrippleStatus
 
 sealed class AppAction : ActionType {
   sealed class AccountAction : AppAction() {
     data class RegisterAction(val accounts : List<Account>) : AccountAction()
     data class ChangeCurrentAction(val account: Account) : AccountAction()
-    data class Load(val accounts : List<Account>) : AccountAction()
+    data class LoadAction(val accounts : List<Account>) : AccountAction()
     sealed class TimelineAction : AccountAction() {
-      data class Load(val pages : List<TimelinePage>) : TimelineAction()
-      data class Add(val page : TimelinePage) : TimelineAction()
+      data class LoadAction(val pages : List<TimelinePage>) : TimelineAction()
+      data class AddAction(val page : TimelinePage) : TimelineAction()
+      data class RemoveAction(val page : TimelinePage) : TimelineAction()
+      sealed class StatusAction : TimelineAction() {
+        data class AddTopAction(val statuses : List<CrippleStatus>) : StatusAction()
+        data class AddBottomAction(val statuses : List<CrippleStatus>) : StatusAction()
+        data class RefreshAction(val status: CrippleStatus) : StatusAction()
+      }
     }
   }
   sealed class AppViewAction : AppAction() {
