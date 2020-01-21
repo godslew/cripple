@@ -1,7 +1,7 @@
-package com.godslew.core.android.state
+package com.godslew.core.domain.state
 
 import com.godslew.core.android.redux.StateType
-import com.godslew.core.android.state.viewstate.AppViewState
+import com.godslew.core.domain.state.viewstate.AppViewState
 import com.godslew.core.java.entity.Account
 
 data class AppState(

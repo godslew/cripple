@@ -61,6 +61,8 @@ class TwitterLoginViewModel @Inject constructor(
         loginUseCase.saveAccount(it)
         AppDispatcher.dispatch(AppAction.AccountAction.RegisterAction(it))
         if (it.size == 1) {
+          // 1つめのアカウント登録の時にだけ行う
+
           AppDispatcher.dispatch(AppAction.AccountAction.ChangeCurrentAction(it.first()))
         }
         finishRegistered.accept(Unit)

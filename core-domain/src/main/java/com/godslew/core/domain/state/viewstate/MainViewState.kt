@@ -1,4 +1,4 @@
-package com.godslew.core.android.state.viewstate
+package com.godslew.core.domain.state.viewstate
 
 import com.godslew.core.android.redux.StateType
 
