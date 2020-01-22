@@ -13,7 +13,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
-import timber.log.Timber
 import javax.inject.Inject
 
 class TimelineViewModel @Inject constructor(
@@ -37,7 +36,6 @@ class TimelineViewModel @Inject constructor(
       .subscribeOn(Schedulers.newThread())
       .observeOn(AndroidSchedulers.mainThread())
       .bindTo {
-        Timber.d("snake00 $it")
         loadTimeline.accept(
           it.flatMap { accountState ->
             accountState.pages.map { timelineState ->
@@ -53,7 +51,6 @@ class TimelineViewModel @Inject constructor(
       .subscribeOn(Schedulers.newThread())
       .observeOn(AndroidSchedulers.mainThread())
       .bindTo {
-        Timber.d("snake00 $it")
         if (it.isNotEmpty()) {
           AppDispatcher.dispatch(AppAction.AccountAction.LoadTimelineAction(it))
         }
