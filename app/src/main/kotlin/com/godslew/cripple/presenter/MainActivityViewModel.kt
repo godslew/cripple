@@ -22,7 +22,6 @@ class MainActivityViewModel @Inject constructor(
   private val disposable  = CompositeDisposable()
 
   val loadedAccounts : PublishRelay<List<Account>> = PublishRelay.create()
-  val isShowTweetButton : PublishRelay<Boolean> = PublishRelay.create()
 
 
   override fun onCleared() {
@@ -35,15 +34,6 @@ class MainActivityViewModel @Inject constructor(
       .observeOn(AndroidSchedulers.mainThread())
       .subscribeOn(Schedulers.io())
       .bindTo { loadedAccounts.accept(it) }
-      .addTo(disposable)
-
-    appStore
-      .observable()
-      .map { it.viewState.mainViewState.isShowTweetButton }
-      .distinctUntilChanged()
-      .observeOn(AndroidSchedulers.mainThread())
-      .subscribeOn(Schedulers.io())
-      .bindTo { isShowTweetButton.accept(it) }
       .addTo(disposable)
   }
 }

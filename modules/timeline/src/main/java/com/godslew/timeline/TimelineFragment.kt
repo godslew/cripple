@@ -33,7 +33,6 @@ class TimelineFragment : BaseFragment() {
     savedInstanceState: Bundle?
   ): View? {
     binding = TimelineFragmentBinding.inflate(inflater, container, false)
-    setup()
     return binding.root
   }
 
@@ -48,6 +47,7 @@ class TimelineFragment : BaseFragment() {
     //   .load(R.layout.item_skeleton_tweet)
     //   .show() //default count is 10
     // binding.pager.postDelayed({ skeletonScreen.hide() }, 3000)
+    setup()
     return
   }
 
@@ -74,5 +74,4 @@ class TimelineFragment : BaseFragment() {
   override fun onResume() {
     super.onResume()
   }
-
 }

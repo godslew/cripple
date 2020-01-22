@@ -21,9 +21,5 @@ sealed class AppAction : ActionType {
       }
     }
   }
-  sealed class AppViewAction : AppAction() {
-    sealed class MainViewAction : AppViewAction() {
-      data class DisplayTweetButtonAction(val isShow: Boolean) : MainViewAction()
-    }
-  }
+  sealed class AppViewAction : AppAction()
 }

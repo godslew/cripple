@@ -42,6 +42,9 @@ class MainActivity : BaseActivity() {
     }
     val navController = findNavController(R.id.nav_host_fragment)
     setupWithNavController(binding.bottomNavigation, navController)
+    navController.addOnDestinationChangedListener { controller, destination, arguments ->
+      binding.fab.isVisible = destination.label == "TimelineFragment"
+    }
 
     setup()
   }
@@ -64,11 +67,6 @@ class MainActivity : BaseActivity() {
           )
         }
     }.addTo(disposable)
-
-    viewModel.isShowTweetButton
-      .bindTo {
-        binding.fab.isVisible = it
-      }
 
     viewModel.setup()
   }
