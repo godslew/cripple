@@ -5,12 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.godslew.core.android.action.AppAction
 import com.godslew.core.android.app.AppRouterType
 import com.godslew.core.android.extensions.bindTo
 import com.godslew.core.android.factory.ViewModelFactory
 import com.godslew.core.android.presenter.BaseFragment
-import com.godslew.core.android.redux.AppDispatcher
 import com.godslew.timeline.databinding.TimelineFragmentBinding
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
@@ -38,7 +36,6 @@ class TimelineFragment : BaseFragment() {
 
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
-    AppDispatcher.dispatch(AppAction.AppViewAction.MainViewAction.DisplayTweetButtonAction(true))
 
     // val skeletonScreen = Skeleton.bind(binding.pager)
     //   .shimmer(true)
