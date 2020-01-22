@@ -43,6 +43,11 @@ dependencies {
   implementation libs.view.shimmerlayout
   implementation libs.view.roundedimageview
 
+  // rx
+  implementation libs.rx2.binding.core
+  implementation libs.rx2.binding.support
+  implementation libs.rx2.binding.recyclerview
+
   //infra
   implementation libs.gk.settingpreferences
 }

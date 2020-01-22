@@ -8,6 +8,7 @@ data class AppState(
   val current : Account,
   val accountList: List<Account>,
   val accountStates: List<AccountState>,
+  val domainState: DomainState,
   val viewState: AppViewState
 ) : StateType {
   companion object {
@@ -16,6 +17,7 @@ data class AppState(
         Account.initialize(),
         accountList = emptyList(),
         accountStates = emptyList(),
+        domainState = DomainState.initial(),
         viewState = AppViewState.initial()
       )
     }

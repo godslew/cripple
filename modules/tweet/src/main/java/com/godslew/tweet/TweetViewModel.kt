@@ -25,10 +25,5 @@ class TweetViewModel @Inject constructor(
   }
   fun postTweet(context: Context, text: String) {
       Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
-    twitterUseCase.verifyCredentials()
-      .observeOn(AndroidSchedulers.mainThread())
-      .subscribeOn(Schedulers.newThread())
-      .bindTo {
-      }.addTo(disposables)
   }
 }

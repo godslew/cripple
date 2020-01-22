@@ -21,5 +21,9 @@ sealed class AppAction : ActionType {
       }
     }
   }
+  //sealed class DomainAction : AppAction() {
+  //  data class PutStatuses(val statuses: List<CrippleStatus>) : DomainAction()
+  //  data class PutStatus(val status : CrippleStatus) : DomainAction()
+  //}
   sealed class AppViewAction : AppAction()
 }
