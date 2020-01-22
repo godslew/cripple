@@ -13,7 +13,7 @@ class ItemAccount(
 
   override fun bind(viewBinding: ItemAccountBinding, position: Int) {
     with(viewBinding) {
-      this.screenName.text = account.screenname()
+      this.screenName.text = "@" + account.screenname()
     }
 
   }

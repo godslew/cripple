@@ -15,4 +15,12 @@
   <dimen name="spacing_xl">32dp</dimen>
   <dimen name="spacing_xxl">48dp</dimen>
   <dimen name="spacing_xxxl">64dp</dimen>
+
+  <dimen name="text_size_xs">4sp</dimen>
+  <dimen name="text_size_s">8sp</dimen>
+  <dimen name="text_size_m">16sp</dimen>
+  <dimen name="text_size_l">24sp</dimen>
+  <dimen name="text_size_xl">32sp</dimen>
+  <dimen name="text_size_xxl">48sp</dimen>
+  <dimen name="text_size_xxxl">64sp</dimen>
 </resources>
