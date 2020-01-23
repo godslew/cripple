@@ -6,6 +6,8 @@ import com.godslew.timeline.R
 import com.godslew.timeline.databinding.ItemStatusTypeTweetBinding
 import com.xwray.groupie.Item
 import com.xwray.groupie.databinding.BindableItem
+import java.text.SimpleDateFormat
+import java.util.*
 
 sealed class StatusItem {
   data class TweetItem(
@@ -18,6 +20,7 @@ sealed class StatusItem {
         name.text = status.user.name
         screenName.text = "@" + status.user.screenName
         statusText.text = status.text
+        date.text = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.JAPAN).format(status.createdAt)
         Glide.with(root.context)
           .asBitmap()
           .load(status.user.profileImageURLHttps)
