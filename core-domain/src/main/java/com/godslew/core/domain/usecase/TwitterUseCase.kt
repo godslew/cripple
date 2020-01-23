@@ -28,7 +28,7 @@ class TwitterUseCase @Inject constructor(
   fun getHomeTimeline(account: Account) : Single<List<CrippleStatus>> {
     val tw = TwitterUtils.createTwitter(account)
     val paging = Paging()
-    paging.count = FetchStatusLimit
+    paging.count = FirstFetchStatusLimit
     return twitterRepository.getHomeTimeline(tw, paging)
   }
 
@@ -48,7 +48,31 @@ class TwitterUseCase @Inject constructor(
     return twitterRepository.getHomeTimeline(tw, paging)
   }
 
+  fun getMentions(account: Account) : Single<List<CrippleStatus>> {
+    val tw = TwitterUtils.createTwitter(account)
+    val paging = Paging()
+    paging.count = FirstFetchStatusLimit
+    return twitterRepository.getMentions(tw, paging)
+  }
+
+  fun getMentionsBySinceId(account: Account, sinceId : Long) : Single<List<CrippleStatus>> {
+    val tw = TwitterUtils.createTwitter(account)
+    val paging = Paging()
+    paging.sinceId = sinceId
+    paging.count = FetchStatusLimit
+    return twitterRepository.getMentions(tw, paging)
+  }
+
+  fun getMentionsByMaxId(account: Account, maxId : Long) : Single<List<CrippleStatus>> {
+    val tw = TwitterUtils.createTwitter(account)
+    val paging = Paging()
+    paging.maxId = maxId
+    paging.count = FetchStatusLimit
+    return twitterRepository.getMentions(tw, paging)
+  }
+
   companion object {
-    private const val FetchStatusLimit = 50
+    private const val FirstFetchStatusLimit = 50
+    private const val FetchStatusLimit = 200
   }
 }

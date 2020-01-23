@@ -4,6 +4,7 @@ import com.godslew.core.android.entity.TimelinePage
 import com.godslew.core.android.redux.ActionType
 import com.godslew.core.java.entity.Account
 import com.godslew.core.java.entity.CrippleStatus
+import com.godslew.core.java.value.PageType
 
 sealed class AppAction : ActionType {
   sealed class AccountAction : AppAction() {
@@ -15,8 +16,8 @@ sealed class AppAction : ActionType {
       data class AddAction(val page : TimelinePage) : TimelineAction()
       data class RemoveAction(val page : TimelinePage) : TimelineAction()
       sealed class StatusAction : TimelineAction() {
-        data class AddTopAction(val statuses : List<CrippleStatus>) : StatusAction()
-        data class AddBottomAction(val statuses : List<CrippleStatus>) : StatusAction()
+        data class AddTopAction(val type : PageType, val statuses : List<CrippleStatus>) : StatusAction()
+        data class AddBottomAction(val type : PageType, val statuses : List<CrippleStatus>) : StatusAction()
         data class RefreshAction(val status: CrippleStatus) : StatusAction()
       }
     }

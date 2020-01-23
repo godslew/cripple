@@ -12,14 +12,14 @@ object StatusReducer : Reducer<TimelineState, AppAction.AccountAction.TimelineAc
   ): TimelineState {
     return when (action) {
       is AppAction.AccountAction.TimelineAction.StatusAction.AddBottomAction ->
-        if (state.account.userId() == action.statuses.firstOrNull()?.twitterID ?: 0) {
-          state.copy(statuses = (action.statuses + state.statuses).distinctBy { it.status.id })
+        if (state.account.userId() == action.statuses.firstOrNull()?.twitterID ?: 0 && state.page == action.type) {
+          state.copy(statuses = (state.statuses + action.statuses).distinctBy { it.status.id })
         } else {
           state
         }
       is AppAction.AccountAction.TimelineAction.StatusAction.AddTopAction ->
-      if (state.account.userId() == action.statuses.firstOrNull()?.twitterID ?: 0) {
-        state.copy(statuses = (state.statuses + action.statuses).distinctBy { it.status.id })
+      if (state.account.userId() == action.statuses.firstOrNull()?.twitterID ?: 0 && state.page == action.type) {
+        state.copy(statuses = (action.statuses + state.statuses).distinctBy { it.status.id })
       } else {
         state
       }

@@ -22,7 +22,7 @@ class TimelineAdapter(
         HomeFragment(page.account)
       }
       PageType.MENTION -> {
-        HomeFragment(page.account)
+        MentionFragment(page.account)
       }
       PageType.LIKE -> {
         HomeFragment(page.account)

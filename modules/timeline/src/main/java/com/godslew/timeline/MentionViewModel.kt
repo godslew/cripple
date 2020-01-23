@@ -17,7 +17,7 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class HomeViewModel @Inject constructor(
+class MentionViewModel @Inject constructor(
   application: Application,
   private val appStore: AppStore,
   private val twitterUseCase: TwitterUseCase
@@ -37,7 +37,7 @@ class HomeViewModel @Inject constructor(
   fun setup(account: Account) {
     appStore.observable()
       .map { it.accountStates.first { accountState ->  accountState.account.userId() == account.userId() } }
-      .map { it.pages.first{ timelineState -> timelineState.page == PageType.HOME } }
+      .map { it.pages.first{ timelineState -> timelineState.page == PageType.MENTION } }
       .map { it.statuses }
       .distinctUntilChanged()
       .observeOn(AndroidSchedulers.mainThread())
@@ -46,14 +46,14 @@ class HomeViewModel @Inject constructor(
         fetchStatuses.accept(it)
       }.addTo(disposable)
 
-    twitterUseCase.getHomeTimeline(account)
+    twitterUseCase.getMentions(account)
       .observeOn(AndroidSchedulers.mainThread())
       .subscribeOn(Schedulers.newThread())
       .bindTo {
         if (it.isNotEmpty()) {
           sinceId = it.first().status.id
           maxId = it.last().status.id
-          AppDispatcher.dispatch(AppAction.AccountAction.TimelineAction.StatusAction.AddTopAction(PageType.HOME, it))
+          AppDispatcher.dispatch(AppAction.AccountAction.TimelineAction.StatusAction.AddTopAction(PageType.MENTION, it))
         }
       }.addTo(disposable)
   }
@@ -62,13 +62,13 @@ class HomeViewModel @Inject constructor(
     if (sinceId == 0L) {
       return
     }
-    twitterUseCase.getHomeTimelineBySinceId(account, sinceId)
+    twitterUseCase.getMentionsBySinceId(account, sinceId)
       .observeOn(AndroidSchedulers.mainThread())
       .subscribeOn(Schedulers.newThread())
       .bindTo {
         if (it.isNotEmpty()) {
           sinceId = it.first().status.id
-          AppDispatcher.dispatch(AppAction.AccountAction.TimelineAction.StatusAction.AddTopAction(PageType.HOME, it))
+          AppDispatcher.dispatch(AppAction.AccountAction.TimelineAction.StatusAction.AddTopAction(PageType.MENTION, it))
         }
       }.addTo(disposable)
 
@@ -78,13 +78,13 @@ class HomeViewModel @Inject constructor(
     if (maxId == 0L) {
       return
     }
-    twitterUseCase.getHomeTimelineByMaxId(account, maxId)
+    twitterUseCase.getMentionsByMaxId(account, maxId)
       .observeOn(AndroidSchedulers.mainThread())
       .subscribeOn(Schedulers.newThread())
       .bindTo {
         if (it.isNotEmpty()) {
           maxId = it.last().status.id
-          AppDispatcher.dispatch(AppAction.AccountAction.TimelineAction.StatusAction.AddBottomAction(PageType.HOME, it))
+          AppDispatcher.dispatch(AppAction.AccountAction.TimelineAction.StatusAction.AddBottomAction(PageType.MENTION, it))
         }
       }.addTo(disposable)
   }
