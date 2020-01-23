@@ -10,6 +10,7 @@ import com.godslew.core.domain.usecase.TwitterUseCase
 import com.godslew.core.java.entity.Account
 import com.godslew.core.java.entity.CrippleStatus
 import com.godslew.core.java.value.PageType
+import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jakewharton.rxrelay2.PublishRelay
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -25,6 +26,7 @@ class HomeViewModel @Inject constructor(
   private val disposable = CompositeDisposable()
 
   val fetchStatuses : PublishRelay<List<CrippleStatus>> = PublishRelay.create()
+  val isFetching : BehaviorRelay<Boolean> = BehaviorRelay.createDefault(false)
 
   private var maxId : Long = 0
   private var sinceId : Long = 0
@@ -46,10 +48,12 @@ class HomeViewModel @Inject constructor(
         fetchStatuses.accept(it)
       }.addTo(disposable)
 
+    isFetching.accept(true)
     twitterUseCase.getHomeTimeline(account)
       .observeOn(AndroidSchedulers.mainThread())
       .subscribeOn(Schedulers.newThread())
       .bindTo {
+        isFetching.accept(false)
         if (it.isNotEmpty()) {
           sinceId = it.first().status.id
           maxId = it.last().status.id
@@ -60,12 +64,15 @@ class HomeViewModel @Inject constructor(
 
   fun fetchTop(account: Account) {
     if (sinceId == 0L) {
+      isFetching.accept(false)
       return
     }
+    isFetching.accept(true)
     twitterUseCase.getHomeTimelineBySinceId(account, sinceId)
       .observeOn(AndroidSchedulers.mainThread())
       .subscribeOn(Schedulers.newThread())
       .bindTo {
+        isFetching.accept(false)
         if (it.isNotEmpty()) {
           sinceId = it.first().status.id
           AppDispatcher.dispatch(AppAction.AccountAction.TimelineAction.StatusAction.AddTopAction(PageType.HOME, it))
@@ -76,12 +83,15 @@ class HomeViewModel @Inject constructor(
 
   fun fetchBottom(account: Account) {
     if (maxId == 0L) {
+      isFetching.accept(false)
       return
     }
+    isFetching.accept(true)
     twitterUseCase.getHomeTimelineByMaxId(account, maxId)
       .observeOn(AndroidSchedulers.mainThread())
       .subscribeOn(Schedulers.newThread())
       .bindTo {
+        isFetching.accept(false)
         if (it.isNotEmpty()) {
           maxId = it.last().status.id
           AppDispatcher.dispatch(AppAction.AccountAction.TimelineAction.StatusAction.AddBottomAction(PageType.HOME, it))

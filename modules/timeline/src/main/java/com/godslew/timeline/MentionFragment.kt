@@ -66,6 +66,11 @@ class MentionFragment(
 
       }.addTo(disposables)
 
+    viewModel.isFetching
+      .bindTo {
+        binding.refreshLayout.isRefreshing = it
+      }.addTo(disposables)
+
     viewModel.setup(account)
   }
 

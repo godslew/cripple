@@ -10,6 +10,7 @@ import com.godslew.core.domain.usecase.TwitterUseCase
 import com.godslew.core.java.entity.Account
 import com.godslew.core.java.entity.CrippleStatus
 import com.godslew.core.java.value.PageType
+import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jakewharton.rxrelay2.PublishRelay
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -25,6 +26,7 @@ class MentionViewModel @Inject constructor(
   private val disposable = CompositeDisposable()
 
   val fetchStatuses : PublishRelay<List<CrippleStatus>> = PublishRelay.create()
+  val isFetching : BehaviorRelay<Boolean> = BehaviorRelay.createDefault(false)
 
   private var maxId : Long = 0
   private var sinceId : Long = 0
@@ -46,10 +48,13 @@ class MentionViewModel @Inject constructor(
         fetchStatuses.accept(it)
       }.addTo(disposable)
 
+    // ToDo タブ追加の時にStoreから取得しに行ってなければAPIを叩くようにする
+    isFetching.accept(true)
     twitterUseCase.getMentions(account)
       .observeOn(AndroidSchedulers.mainThread())
       .subscribeOn(Schedulers.newThread())
       .bindTo {
+        isFetching.accept(false)
         if (it.isNotEmpty()) {
           sinceId = it.first().status.id
           maxId = it.last().status.id
@@ -60,12 +65,15 @@ class MentionViewModel @Inject constructor(
 
   fun fetchTop(account: Account) {
     if (sinceId == 0L) {
+      isFetching.accept(false)
       return
     }
+    isFetching.accept(true)
     twitterUseCase.getMentionsBySinceId(account, sinceId)
       .observeOn(AndroidSchedulers.mainThread())
       .subscribeOn(Schedulers.newThread())
       .bindTo {
+        isFetching.accept(false)
         if (it.isNotEmpty()) {
           sinceId = it.first().status.id
           AppDispatcher.dispatch(AppAction.AccountAction.TimelineAction.StatusAction.AddTopAction(PageType.MENTION, it))
@@ -76,8 +84,10 @@ class MentionViewModel @Inject constructor(
 
   fun fetchBottom(account: Account) {
     if (maxId == 0L) {
+      isFetching.accept(true)
       return
     }
+    isFetching.accept(false)
     twitterUseCase.getMentionsByMaxId(account, maxId)
       .observeOn(AndroidSchedulers.mainThread())
       .subscribeOn(Schedulers.newThread())

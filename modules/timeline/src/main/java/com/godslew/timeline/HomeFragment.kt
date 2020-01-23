@@ -62,8 +62,13 @@ class HomeFragment(
         if (currentAdapter != null && currentAdapter is GroupAdapter) {
           currentAdapter.updateAsync(it.map { status -> StatusItem.TweetItem(status) })
         }
-
       }.addTo(disposables)
+
+    viewModel.isFetching
+      .bindTo {
+        binding.refreshLayout.isRefreshing = it
+      }.addTo(disposables)
+
 
     viewModel.setup(account)
   }
