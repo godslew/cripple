@@ -42,7 +42,7 @@ class MainActivity : BaseActivity() {
     }
     val navController = findNavController(R.id.nav_host_fragment)
     setupWithNavController(binding.bottomNavigation, navController)
-    navController.addOnDestinationChangedListener { controller, destination, arguments ->
+    navController.addOnDestinationChangedListener { _, destination, _ ->
       binding.fab.isVisible = destination.label == "TimelineFragment"
     }
 
