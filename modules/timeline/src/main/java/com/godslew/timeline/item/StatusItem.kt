@@ -16,7 +16,11 @@ sealed class StatusItem {
     override fun getLayout(): Int = R.layout.item_status_type_tweet
     override fun bind(binding: ItemStatusTypeTweetBinding, position: Int) {
       with(binding) {
-        val status = crippleStatus.status
+        val status = if (crippleStatus.status.isRetweet) {
+          crippleStatus.status.retweetedStatus
+        } else {
+          crippleStatus.status
+        }
         name.text = status.user.name
         screenName.text = "@" + status.user.screenName
         statusText.text = status.text

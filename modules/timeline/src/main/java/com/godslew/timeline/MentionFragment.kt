@@ -84,6 +84,7 @@ class MentionFragment(
     binding.list.adapter = adapter
     binding.list.layoutManager = manager
     binding.list.scrollEvents()
+      .filter { it.dy() > 0 }
       .filter { manager.itemCount != 0 }
       .filter { manager.findLastVisibleItemPosition() == manager.itemCount - 1 }
       .throttleFirst(1, TimeUnit.SECONDS)
