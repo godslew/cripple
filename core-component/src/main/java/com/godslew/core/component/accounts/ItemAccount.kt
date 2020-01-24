@@ -7,13 +7,15 @@ import com.xwray.groupie.Item
 import com.xwray.groupie.databinding.BindableItem
 
 class ItemAccount(
-  val account: Account
+  val account: Account,
+  val openAccount : (Account) -> Unit
 ) : BindableItem<ItemAccountBinding>()  {
   override fun getLayout(): Int = R.layout.item_account
 
   override fun bind(viewBinding: ItemAccountBinding, position: Int) {
     with(viewBinding) {
       this.screenName.text = "@" + account.screenname()
+      root.setOnClickListener { openAccount(account) }
     }
 
   }

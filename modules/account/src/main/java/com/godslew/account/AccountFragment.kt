@@ -13,6 +13,7 @@ import com.godslew.core.android.factory.ViewModelFactory
 import com.godslew.core.android.presenter.BaseFragment
 import com.godslew.core.component.accounts.ItemAccount
 import com.godslew.core.component.accounts.ItemAddAccount
+import com.godslew.core.java.entity.Account
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -58,10 +59,14 @@ class AccountFragment : BaseFragment() {
     val addAccount : () -> Unit = {
       startActivity(appRouter.getOAuthActivity(requireContext()))
     }
+
+    val openAccount : (account : Account) -> Unit = {
+      startActivity(appRouter.getTimelineCreatorActivity(requireContext(), it))
+    }
     viewModel.accounts
       .observeOn(AndroidSchedulers.mainThread())
       .bindTo {
-        val accounts = it.map { ac -> ItemAccount(ac) }
+        val accounts = it.map { ac -> ItemAccount(ac, openAccount) }
         val addItem = ItemAddAccount(addAccount)
         val currentAdapter = binding.list.adapter
         if (currentAdapter is GroupAdapter) {

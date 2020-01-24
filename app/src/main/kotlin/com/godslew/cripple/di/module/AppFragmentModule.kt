@@ -4,6 +4,7 @@ import com.godslew.account.AccountFragment
 import com.godslew.timeline.HomeFragment
 import com.godslew.timeline.MentionFragment
 import com.godslew.timeline.TimelineFragment
+import com.godslew.timeline.creator.TimelineCreatorFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -20,4 +21,7 @@ abstract class AppFragmentModule {
 
   @ContributesAndroidInjector
   abstract fun contributeAccountFragment() : AccountFragment
+
+  @ContributesAndroidInjector
+  abstract fun contributeTimelineCreatorFragment() : TimelineCreatorFragment
 }

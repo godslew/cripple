@@ -28,6 +28,10 @@
       android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
     <activity
+      android:name="com.godslew.timeline.creator.TimelineCreatorActivity"
+      android:theme="@style/AppTheme.NoActionBar"/>
+
+    <activity
       android:name="com.godslew.oauth.TwitterLoginActivity"
       android:theme="@style/Theme.AppCompat.Light.NoActionBar"
       android:launchMode="singleTop" >
