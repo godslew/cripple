@@ -33,13 +33,7 @@
 
       <Button
         style="@style/PrimaryButton"
-        android:layout_width="@dimen/spacing_l"
-        android:layout_height="@dimen/spacing_l"
-        android:layout_marginEnd="@dimen/list_item_spacing"
-        android:background="@drawable/ic_note_add_white_24dp"/>
-
-      <Button
-        style="@style/PrimaryButton"
+        android:backgroundTint="@color/cripple_red"
         android:layout_width="@dimen/spacing_l"
         android:layout_height="@dimen/spacing_l"
         android:layout_marginEnd="@dimen/list_item_spacing"
