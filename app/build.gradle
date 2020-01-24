@@ -43,25 +43,21 @@ dependencies {
   implementation project(':modules:tweet')
   implementation project(':modules:oauth')
   implementation project(':modules:account')
+  implementation project(':modules:timeline-creator')
 
-  implementation 'androidx.appcompat:appcompat:1.1.0'
-  implementation 'androidx.core:core-ktx:1.1.0'
-  implementation 'androidx.navigation:navigation-fragment-ktx:2.1.0'
-  implementation 'androidx.navigation:navigation-ui-ktx:2.1.0'
-  implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-  implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
-  implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0'
-  testImplementation 'junit:junit:4.12'
-  androidTestImplementation 'androidx.test:runner:1.2.0'
-  androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+  implementation libs.androidx.appcompat
+  implementation libs.androidx.corektx
+  implementation libs.androidx.fragmentktx
+  implementation libs.androidx.navigation.navigationfragmentktx
+  implementation libs.androidx.navigation.navigationuiktx
+  testImplementation libs.testing.junit
+  androidTestImplementation libs.testing.runner
+  androidTestImplementation libs.testing.espresso
 
   // ui
-  implementation 'androidx.viewpager2:viewpager2:1.0.0'
-  implementation 'com.google.android.material:material:1.0.0'
-  implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-  implementation 'androidx.navigation:navigation-fragment:2.1.0'
-  implementation 'androidx.navigation:navigation-ui:2.1.0'
-  implementation 'androidx.recyclerview:recyclerview:1.1.0'
+  implementation libs.view.material
+  implementation libs.androidx.constraintlayout
+  implementation libs.androidx.recyclerview
 
   // dagger
   kapt libs.dagger.java.compiler
@@ -70,8 +66,6 @@ dependencies {
   // view
   implementation libs.view.groupie.core
   implementation libs.view.groupie.databinding
-  implementation 'com.ethanhua:skeleton:1.1.2'
-  implementation 'io.supercharge:shimmerlayout:2.1.0'
 
   implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
