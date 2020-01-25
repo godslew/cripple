@@ -6,5 +6,6 @@ enum class PageType {
   LIKE,
   DM,
   SEARCH,
-  USER;
+  USER,
+  LIST;
 }

@@ -39,7 +39,7 @@ class TimelineCreatorActivity : BaseActivity() {
 
   private fun setupToolbar() {
     binding.toolbar.setNavigationIcon(R.drawable.ic_close_white_18dp)
-    binding.toolbar.title = account.screenname()
+    binding.toolbar.title = "@" + account.screenname()
     setSupportActionBar(binding.toolbar)
     supportActionBar?.setDisplayHomeAsUpEnabled(true)
     supportActionBar?.setHomeButtonEnabled(true)

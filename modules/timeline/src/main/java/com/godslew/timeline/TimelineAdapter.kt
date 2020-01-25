@@ -36,6 +36,9 @@ class TimelineAdapter(
       PageType.USER -> {
         HomeFragment(page.account)
       }
+      PageType.LIST -> {
+        HomeFragment(page.account)
+      }
     }
   }
 }
