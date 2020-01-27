@@ -8,4 +8,10 @@ enum class PageType {
   SEARCH,
   USER,
   LIST;
+
+  companion object {
+   fun getPageTypes() : List<PageType> {
+     return listOf(HOME, MENTION, LIKE, DM, SEARCH, USER, LIST)
+   }
+  }
 }

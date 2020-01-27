@@ -26,13 +26,13 @@ data class ItemTimelineTab(
 sealed class TimelineTab {
   abstract val iconSource : Int
   abstract val textSource : Int
-  data class Home(override val iconSource: Int = R.drawable.ic_home_white_24dp, override val textSource: Int = R.string.menu_list ) : TimelineTab()
-  data class Mention(override val iconSource: Int = R.drawable.ic_message_white_24dp, override val textSource: Int = R.string.menu_list ) : TimelineTab()
-  data class Like(override val iconSource: Int = R.drawable.ic_favorite_white_24dp, override val textSource: Int = R.string.menu_list ) : TimelineTab()
-  data class DM(override val iconSource: Int = R.drawable.ic_mail_outline_white_24dp, override val textSource: Int = R.string.menu_list ) : TimelineTab()
-  data class Search(override val iconSource: Int = R.drawable.ic_search_white_24dp, override val textSource: Int = R.string.menu_list ) : TimelineTab()
-  data class User(override val iconSource: Int = R.drawable.ic_account_circle_white_24dp, override val textSource: Int = R.string.menu_list ) : TimelineTab()
-  data class List(override val iconSource: Int = R.drawable.ic_list_white_24dp, override val textSource: Int = R.string.menu_list ) : TimelineTab()
+  data class Home(override val iconSource: Int = R.drawable.ic_home_white_24dp, override val textSource: Int = R.string.timeline_home ) : TimelineTab()
+  data class Mention(override val iconSource: Int = R.drawable.ic_message_white_24dp, override val textSource: Int = R.string.timeline_mention ) : TimelineTab()
+  data class Like(override val iconSource: Int = R.drawable.ic_favorite_white_24dp, override val textSource: Int = R.string.timeline_like ) : TimelineTab()
+  data class DM(override val iconSource: Int = R.drawable.ic_mail_outline_white_24dp, override val textSource: Int = R.string.timeline_dm ) : TimelineTab()
+  data class Search(override val iconSource: Int = R.drawable.ic_search_white_24dp, override val textSource: Int = R.string.timeline_search ) : TimelineTab()
+  data class User(override val iconSource: Int = R.drawable.ic_account_circle_white_24dp, override val textSource: Int = R.string.timeline_user ) : TimelineTab()
+  data class List(override val iconSource: Int = R.drawable.ic_list_white_24dp, override val textSource: Int = R.string.timeline_list ) : TimelineTab()
 
   companion object {
     fun getTimelineTabResource(pageType: PageType) : TimelineTab {

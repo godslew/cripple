@@ -12,5 +12,13 @@
   <string name="menu_accounts">Accounts</string>
   <string name="menu_setting">Setting</string>
 
+  <string name="timeline_home">Home</string>
+  <string name="timeline_mention">Mention</string>
+  <string name="timeline_like">Like</string>
+  <string name="timeline_dm">DM</string>
+  <string name="timeline_search">Search</string>
+  <string name="timeline_user">User</string>
+  <string name="timeline_list">List</string>
+
   <string name="hello_blank_fragment">Cripple</string>
 </resources>
