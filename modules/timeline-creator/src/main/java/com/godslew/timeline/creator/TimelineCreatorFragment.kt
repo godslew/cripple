@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.godslew.core.android.factory.ViewModelFactory
 import com.godslew.core.android.presenter.BaseFragment
 import com.godslew.core.component.timeline.ItemTimelineTab
+import com.godslew.core.component.timeline.TimelineTab
 import com.godslew.core.java.entity.Account
 import com.godslew.core.java.value.PageType
 import com.godslew.timeline.creator.databinding.FragmentTimelineCreatorBinding
@@ -41,7 +42,7 @@ class TimelineCreatorFragment(account: Account) : BaseFragment() {
 
   private fun  setup() {
     val currentAdapter = binding.list.adapter
-    val tabItems = PageType.getPageTypes().map { ItemTimelineTab(true, it) }
+    val tabItems = PageType.getPageTypes().map { ItemTimelineTab(true, TimelineTab.getTimelineTabResource(it)) }
     if (currentAdapter != null && currentAdapter is GroupAdapter) {
       currentAdapter.updateAsync(tabItems)
     }

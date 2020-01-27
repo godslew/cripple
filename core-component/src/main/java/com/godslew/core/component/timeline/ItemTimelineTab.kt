@@ -7,7 +7,7 @@ import com.xwray.groupie.databinding.BindableItem
 
 data class ItemTimelineTab(
   val isEnable: Boolean,
-  val pageType: PageType
+  val tab : TimelineTab
 ) : BindableItem<ItemTabTimelineBinding>() {
   override fun getLayout(): Int = R.layout.item_tab_timeline
 
@@ -16,7 +16,6 @@ data class ItemTimelineTab(
       if (isEnable) {
         root.setOnClickListener { }
       }
-      val tab = TimelineTab.getTimelineTabResource(pageType)
       icon.background = root.context.getDrawable(tab.iconSource)
       name.text = root.context.getString(tab.textSource)
     }
