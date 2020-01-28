@@ -60,7 +60,7 @@ class HomeFragment(
       .bindTo {
         val currentAdapter = binding.list.adapter
         if (currentAdapter != null && currentAdapter is GroupAdapter) {
-          currentAdapter.updateAsync(it.map { status -> StatusItem.TweetItem(status) })
+          currentAdapter.updateAsync(it.map { status -> StatusItem(status) })
         }
       }.addTo(disposables)
 

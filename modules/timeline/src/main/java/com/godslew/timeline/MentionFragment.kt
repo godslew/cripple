@@ -11,7 +11,6 @@ import com.godslew.core.android.factory.ViewModelFactory
 import com.godslew.core.android.presenter.BaseFragment
 import com.godslew.core.domain.store.AppStore
 import com.godslew.core.java.entity.Account
-import com.godslew.timeline.databinding.FragmentHomeBinding
 import com.godslew.timeline.databinding.FragmentMentionBinding
 import com.godslew.timeline.item.StatusItem
 import com.jakewharton.rxbinding2.support.v7.widget.scrollEvents
@@ -61,7 +60,7 @@ class MentionFragment(
       .bindTo {
         val currentAdapter = binding.list.adapter
         if (currentAdapter != null && currentAdapter is GroupAdapter) {
-          currentAdapter.updateAsync(it.map { status -> StatusItem.TweetItem(status) })
+          currentAdapter.updateAsync(it.map { status -> StatusItem(status) })
         }
 
       }.addTo(disposables)

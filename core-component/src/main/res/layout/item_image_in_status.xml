@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+  <ImageView
+    android:id="@+id/photo"
+    android:layout_width="@dimen/image_in_status_size"
+    android:layout_height="@dimen/image_in_status_size"
+    android:maxHeight="@dimen/max_image_size"
+    android:maxWidth="@dimen/max_image_size"
+    android:background="@color/colorPrimary"
+    android:src="@mipmap/ic_launcher_round"/>
+</layout>
