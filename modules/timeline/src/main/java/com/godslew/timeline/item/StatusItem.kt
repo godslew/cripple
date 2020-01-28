@@ -31,6 +31,7 @@ data class StatusItem(
       screenName.text = "@" + status.user.screenName
       statusText.text = status.text
       date.text = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.JAPAN).format(status.createdAt)
+
       Glide.with(root.context)
         .asBitmap()
         .load(status.user.profileImageURLHttps)
@@ -39,22 +40,24 @@ data class StatusItem(
 
       val items = status.mediaEntities.map {
         when (MediaType.getType(it.type)) {
-          MediaType.PHOTO -> ItemMedia.Photo(it)
-          MediaType.GIF -> ItemMedia.Photo(it)
+          MediaType.PHOTO -> if (status.mediaEntities.size > 1) { ItemMedia.Photos(it) } else { ItemMedia.Photo(it) }
+          MediaType.GIF -> ItemMedia.Gif(it)
           MediaType.VIDEO -> ItemMedia.Photo(it)
         }
-      }.filter { it.mediaEntity.type == MediaType.PHOTO.type }
+      }.filter { it.mediaEntity.type != MediaType.VIDEO.type }
       images.visibility = if (items.isNotEmpty()) {
         View.VISIBLE
       } else {
         View.GONE
       }
+      val spanSize = if (items.size > 1) { 2 } else { 1 }
       val currentAdapter = images.adapter
       if (currentAdapter != null && currentAdapter is GroupAdapter) {
+        (images.layoutManager as? GridLayoutManager)?.spanCount = spanSize
         currentAdapter.updateAsync(items)
       } else {
         val adapter = GroupAdapter<GroupieViewHolder>()
-        val manager = GridLayoutManager(root.context, 2, LinearLayoutManager.VERTICAL, false)
+        val manager = GridLayoutManager(root.context, spanSize)
         images.adapter = adapter
         images.layoutManager = manager
         adapter.updateAsync(items)

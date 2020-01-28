@@ -61,17 +61,19 @@
 
     <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/images"
-      android:layout_width="wrap_content"
+      android:layout_width="320dp"
       android:layout_height="wrap_content"
       app:layout_constraintStart_toEndOf="@id/icon"
       app:layout_constraintTop_toBottomOf="@+id/status_text"
       app:layout_constraintBottom_toTopOf="@id/date"
       app:layout_constraintEnd_toEndOf="parent"
       android:visibility="gone"
+      android:layout_marginStart="12dp"
+      android:layout_marginEnd="24dp"
+      android:layout_marginBottom="@dimen/spacing_xs"
+      android:layout_marginTop="@dimen/spacing_xs"
       tool:visibility="visible"
-      tool:itemCount="1"
       tool:listitem="@layout/item_image_in_status"
-      tool:orientation="vertical"
       />
 
     <TextView
