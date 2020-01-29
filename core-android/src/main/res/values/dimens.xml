@@ -24,6 +24,9 @@
   <dimen name="text_size_xxl">18sp</dimen>
   <dimen name="text_size_xxxl">24sp</dimen>
 
-  <dimen name="image_in_status_width">160dp</dimen>
-  <dimen name="image_in_status_height">100dp</dimen>
+
+  <dimen name="images_in_status_width">320dp</dimen>
+  <dimen name="images_in_status_height">200dp</dimen>
+  <dimen name="image_in_status_width">156dp</dimen>
+  <dimen name="image_in_status_height">96dp</dimen>
 </resources>

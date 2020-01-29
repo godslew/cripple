@@ -61,7 +61,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/images"
-      android:layout_width="320dp"
+      android:layout_width="@dimen/images_in_status_width"
       android:layout_height="wrap_content"
       app:layout_constraintStart_toEndOf="@id/icon"
       app:layout_constraintTop_toBottomOf="@+id/status_text"
