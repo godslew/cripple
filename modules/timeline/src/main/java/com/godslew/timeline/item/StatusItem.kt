@@ -2,7 +2,6 @@ package com.godslew.timeline.item
 
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.godslew.core.component.timeline.ItemMedia
 import com.godslew.core.java.entity.CrippleStatus

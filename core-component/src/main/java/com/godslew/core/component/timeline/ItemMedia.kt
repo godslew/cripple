@@ -8,12 +8,33 @@ import com.bumptech.glide.request.RequestOptions
 import com.godslew.core.component.R
 import com.godslew.core.component.databinding.ItemImageInStatusBinding
 import com.godslew.core.component.databinding.ItemImagesInStatusBinding
+import com.xwray.groupie.Item
 import com.xwray.groupie.databinding.BindableItem
 import twitter4j.MediaEntity
 
 
 sealed class ItemMedia<T : ViewDataBinding> : BindableItem<T>() {
   abstract val mediaEntity: MediaEntity
+
+  override fun equals(other: Any?): Boolean {
+    return if (other != null && other is ItemMedia<*>) {
+      other.mediaEntity.id == mediaEntity.id
+    } else {
+      false
+    }
+  }
+
+  override fun isSameAs(other: Item<*>?): Boolean {
+    return if (other != null && other is ItemMedia<*>) {
+      other.mediaEntity == mediaEntity
+    } else {
+      false
+    }
+  }
+
+  override fun hashCode(): Int {
+    return mediaEntity.hashCode()
+  }
 
   data class Photo(
     override val mediaEntity: MediaEntity
@@ -48,6 +69,7 @@ sealed class ItemMedia<T : ViewDataBinding> : BindableItem<T>() {
       }
     }
   }
+
   // TODO use ExoPlayer
   data class Gif(
     override val mediaEntity: MediaEntity
