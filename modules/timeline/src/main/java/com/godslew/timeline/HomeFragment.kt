@@ -12,7 +12,7 @@ import com.godslew.core.android.presenter.BaseFragment
 import com.godslew.core.domain.store.AppStore
 import com.godslew.core.java.entity.Account
 import com.godslew.timeline.databinding.FragmentHomeBinding
-import com.godslew.timeline.item.StatusItem
+import com.godslew.core.component.timeline.ItemStatus
 import com.jakewharton.rxbinding2.support.v7.widget.scrollEvents
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
@@ -60,7 +60,11 @@ class HomeFragment(
       .bindTo {
         val currentAdapter = binding.list.adapter
         if (currentAdapter != null && currentAdapter is GroupAdapter) {
-          currentAdapter.updateAsync(it.map { status -> StatusItem(status) })
+          currentAdapter.updateAsync(it.map { status ->
+            ItemStatus(
+              status
+            )
+          })
         }
       }.addTo(disposables)
 

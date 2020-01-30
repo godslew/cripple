@@ -1,13 +1,12 @@
-package com.godslew.timeline.item
+package com.godslew.core.component.timeline
 
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
+import com.godslew.core.component.R
 import com.godslew.core.component.decoration.ImagesItemDecoration
-import com.godslew.core.component.timeline.ItemMedia
 import com.godslew.core.java.entity.CrippleStatus
 import com.godslew.core.java.value.MediaType
-import com.godslew.timeline.R
 import com.godslew.timeline.databinding.ItemStatusBinding
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
@@ -16,7 +15,7 @@ import com.xwray.groupie.databinding.BindableItem
 import java.text.SimpleDateFormat
 import java.util.*
 
-data class StatusItem(
+data class ItemStatus(
   private val crippleStatus: CrippleStatus
 ) : BindableItem<ItemStatusBinding>() {
   override fun getLayout(): Int = R.layout.item_status
@@ -67,14 +66,14 @@ data class StatusItem(
   }
 
   override fun isSameAs(other: Item<*>?): Boolean {
-    if (other != null && other is StatusItem) {
+    if (other != null && other is ItemStatus) {
       return other.crippleStatus.status.id == crippleStatus.status.id
     }
     return false
   }
 
   override fun equals(other: Any?): Boolean {
-    if (other != null && other is StatusItem) {
+    if (other != null && other is ItemStatus) {
       return other.crippleStatus == crippleStatus
     }
     return false
