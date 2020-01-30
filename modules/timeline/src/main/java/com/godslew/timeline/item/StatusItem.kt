@@ -3,6 +3,7 @@ package com.godslew.timeline.item
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
+import com.godslew.core.component.decoration.ImagesItemDecoration
 import com.godslew.core.component.timeline.ItemMedia
 import com.godslew.core.java.entity.CrippleStatus
 import com.godslew.core.java.value.MediaType
@@ -59,6 +60,7 @@ data class StatusItem(
         val manager = GridLayoutManager(root.context, spanSize)
         images.adapter = adapter
         images.layoutManager = manager
+        images.addItemDecoration(ImagesItemDecoration.createDefaultDecoration(root.context))
         adapter.updateAsync(items)
       }
     }
