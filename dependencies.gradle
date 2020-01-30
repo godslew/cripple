@@ -25,7 +25,7 @@ ext.versions = [
 
   // Dependency Injection
   dagger        : [
-    core  : '2.25.2',
+    core  : '2.26',
     jsr250: '1.0'
   ],
 
