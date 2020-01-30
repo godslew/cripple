@@ -52,6 +52,7 @@ data class ItemStatus(
       val spanSize = if (items.size > 1) { 2 } else { 1 }
       val currentAdapter = images.adapter
       if (currentAdapter != null && currentAdapter is GroupAdapter) {
+        currentAdapter.clear()
         (images.layoutManager as? GridLayoutManager)?.spanCount = spanSize
         currentAdapter.updateAsync(items)
       } else {
