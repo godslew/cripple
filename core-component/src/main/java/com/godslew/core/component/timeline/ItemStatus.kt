@@ -4,10 +4,10 @@ import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.godslew.core.component.R
+import com.godslew.core.component.databinding.ItemStatusBinding
 import com.godslew.core.component.decoration.ImagesItemDecoration
 import com.godslew.core.java.entity.CrippleStatus
 import com.godslew.core.java.value.MediaType
-import com.godslew.timeline.databinding.ItemStatusBinding
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
