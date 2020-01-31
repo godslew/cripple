@@ -44,6 +44,8 @@ dependencies {
   implementation project(':modules:oauth')
   implementation project(':modules:account')
   implementation project(':modules:timeline-creator')
+  implementation project(':modules:status-detail')
+  implementation project(':modules:image-detail')
 
   implementation libs.androidx.appcompat
   implementation libs.androidx.corektx

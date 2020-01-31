@@ -5,12 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="@color/colorPrimary"
     >
 
     <FrameLayout
       android:id="@+id/fragment_container"
       android:layout_width="match_parent"
-      android:layout_height="match_parent" />
+      android:layout_height="0dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
 
     <androidx.appcompat.widget.Toolbar
       android:id="@+id/toolbar"
@@ -21,5 +26,6 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:titleTextColor="@color/white" />
+
   </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
