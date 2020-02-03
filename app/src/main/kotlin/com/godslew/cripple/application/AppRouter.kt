@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import com.godslew.core.android.app.AppRouterType
 import com.godslew.core.java.entity.Account
+import com.godslew.core.java.entity.CrippleStatus
+import com.godslew.image.detail.ImageDetailActivity
 import com.godslew.oauth.TwitterLoginActivity
 import com.godslew.timeline.creator.TimelineCreatorActivity
 import com.godslew.tweet.TweetActivity
@@ -19,5 +21,9 @@ class AppRouter : AppRouterType{
 
   override fun getTimelineCreatorActivity(context: Context, account: Account): Intent {
     return TimelineCreatorActivity.createIntent(context, account)
+  }
+
+  override fun getImageDetailActivity(context: Context, status: CrippleStatus): Intent {
+    return ImageDetailActivity.createIntent(context, status)
   }
 }
