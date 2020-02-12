@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.godslew.core.android.app.AppRouterType
 import com.godslew.core.android.extensions.bindTo
 import com.godslew.core.android.factory.ViewModelFactory
 import com.godslew.core.android.presenter.BaseFragment
@@ -13,6 +14,7 @@ import com.godslew.core.domain.store.AppStore
 import com.godslew.core.java.entity.Account
 import com.godslew.timeline.databinding.FragmentHomeBinding
 import com.godslew.core.component.timeline.ItemStatus
+import com.godslew.core.java.entity.CrippleStatus
 import com.jakewharton.rxbinding2.support.v7.widget.scrollEvents
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
@@ -31,6 +33,8 @@ class HomeFragment(
 
   @Inject
   internal lateinit var appStore: AppStore
+  @Inject
+  internal lateinit var appRouter: AppRouterType
   @Inject
   internal lateinit var factory: ViewModelFactory<HomeViewModel>
   private val viewModel: HomeViewModel by viewModels { factory }
@@ -55,6 +59,9 @@ class HomeFragment(
   }
 
   private fun setup() {
+    val imageClick : (status : CrippleStatus) -> Unit = {
+      startActivity(appRouter.getImageDetailActivity(requireContext(), it))
+    }
     setupRecyclerView()
     viewModel.fetchStatuses
       .bindTo {
@@ -62,7 +69,8 @@ class HomeFragment(
         if (currentAdapter != null && currentAdapter is GroupAdapter) {
           currentAdapter.updateAsync(it.map { status ->
             ItemStatus(
-              status
+              status,
+              imageClick
             )
           })
         }

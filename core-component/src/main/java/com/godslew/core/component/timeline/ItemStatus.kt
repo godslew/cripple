@@ -16,7 +16,8 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 data class ItemStatus(
-  private val crippleStatus: CrippleStatus
+  private val crippleStatus: CrippleStatus,
+  private val imageClick : (CrippleStatus) -> Unit
 ) : BindableItem<ItemStatusBinding>() {
   override fun getLayout(): Int = R.layout.item_status
   override fun bind(binding: ItemStatusBinding, position: Int) {
@@ -54,6 +55,9 @@ data class ItemStatus(
       if (currentAdapter != null && currentAdapter is GroupAdapter) {
         currentAdapter.clear()
         (images.layoutManager as? GridLayoutManager)?.spanCount = spanSize
+        currentAdapter.setOnItemClickListener { _, _ ->
+          imageClick(crippleStatus)
+        }
         currentAdapter.updateAsync(items)
       } else {
         val adapter = GroupAdapter<GroupieViewHolder>()
@@ -61,6 +65,9 @@ data class ItemStatus(
         images.adapter = adapter
         images.layoutManager = manager
         images.addItemDecoration(ImagesItemDecoration.createDefaultDecoration(root.context))
+        adapter.setOnItemClickListener { _, _ ->
+          imageClick(crippleStatus)
+        }
         adapter.updateAsync(items)
       }
     }

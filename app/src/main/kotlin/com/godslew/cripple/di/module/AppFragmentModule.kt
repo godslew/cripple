@@ -1,6 +1,7 @@
 package com.godslew.cripple.di.module
 
 import com.godslew.account.AccountFragment
+import com.godslew.image.detail.ImageDetailFragment
 import com.godslew.timeline.HomeFragment
 import com.godslew.timeline.MentionFragment
 import com.godslew.timeline.TimelineFragment
@@ -24,4 +25,7 @@ abstract class AppFragmentModule {
 
   @ContributesAndroidInjector
   abstract fun contributeTimelineCreatorFragment() : TimelineCreatorFragment
+
+  @ContributesAndroidInjector
+  abstract fun contributeImageDetailFragment() : ImageDetailFragment
 }
