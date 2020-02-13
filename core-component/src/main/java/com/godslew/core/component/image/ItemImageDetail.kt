@@ -1,6 +1,7 @@
 package com.godslew.core.component.image
 
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.FitCenter
 import com.godslew.core.component.R
 import com.godslew.core.component.databinding.ItemImageDetailBinding
@@ -17,6 +18,7 @@ class ItemImageDetail(
       Glide.with(root.context)
         .asBitmap()
         .load(media.mediaURLHttps)
+        .diskCacheStrategy(DiskCacheStrategy.ALL)
         .transform(FitCenter())
         .into(image)
     }

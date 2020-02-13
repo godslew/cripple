@@ -2,6 +2,7 @@ package com.godslew.core.component.timeline
 
 import androidx.databinding.ViewDataBinding
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
@@ -47,6 +48,7 @@ sealed class ItemMedia<T : ViewDataBinding> : BindableItem<T>() {
         Glide.with(root.context)
           .asBitmap()
           .load(mediaEntity.mediaURLHttps)
+          .diskCacheStrategy(DiskCacheStrategy.ALL)
           .transform(CenterCrop(), RoundedCorners(25))
           .into(photo)
       }
@@ -64,6 +66,7 @@ sealed class ItemMedia<T : ViewDataBinding> : BindableItem<T>() {
         Glide.with(root.context)
           .asBitmap()
           .load(mediaEntity.mediaURLHttps)
+          .diskCacheStrategy(DiskCacheStrategy.ALL)
           .transform(CenterCrop(), RoundedCorners(25))
           .into(photo)
       }
@@ -82,6 +85,7 @@ sealed class ItemMedia<T : ViewDataBinding> : BindableItem<T>() {
         Glide.with(root.context)
           .asBitmap()
           .load(mediaEntity.mediaURLHttps)
+          .diskCacheStrategy(DiskCacheStrategy.ALL)
           .apply(RequestOptions.bitmapTransform(RoundedCorners(30)))
           .into(photo)
       }

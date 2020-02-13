@@ -17,7 +17,7 @@ import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 class ImageDetailFragment(
-  private val status : CrippleStatus
+  private val cStatus : CrippleStatus
 ) : BaseFragment() {
   private val disposable = CompositeDisposable()
 
@@ -49,7 +49,12 @@ class ImageDetailFragment(
 
   private fun setup() {
     with(binding) {
-      val items = status.status.mediaEntities.map {
+      val status = if (cStatus.status.isRetweet) {
+        cStatus.status.retweetedStatus
+      } else {
+        cStatus.status
+      }
+      val items = status.mediaEntities.map {
         ItemImageDetail(it)
       }
       val currentAdapter = images.adapter
