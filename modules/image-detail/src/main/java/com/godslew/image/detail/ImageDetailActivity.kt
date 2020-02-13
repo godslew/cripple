@@ -36,7 +36,7 @@ class ImageDetailActivity : BaseActivity() {
 
   private fun setupToolbar() {
     window.statusBarColor = ContextCompat.getColor(this, R.color.colorPrimary)
-    binding.toolbar.setNavigationIcon(R.drawable.ic_close_white_18dp)
+    binding.toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp)
     setSupportActionBar(binding.toolbar)
     supportActionBar?.setDisplayHomeAsUpEnabled(true)
     supportActionBar?.setHomeButtonEnabled(true)
