@@ -1,11 +1,11 @@
 ext.versions = [
-  minsdk        : 22,
-  targetsdk     : 29,
-  compilesdk    : 29,
-  buildtool     : '29.0.2',
+  minsdk        : 24,
+  targetsdk     : 30,
+  compilesdk    : 30,
+  buildtool     : '30.0.2',
 
   // gradle
-  gradle        : '3.5.3',
+  gradle        : '4.0.1',
 
   kotlin        : '1.4.0',
 
@@ -48,7 +48,7 @@ ext.versions = [
     groupie         : '2.7.0',
     skeleton        : '1.1.2',
     shimmerlayout   : '2.1.0',
-    material        : '1.0.0',
+    material        : '1.1.0',
     flexbox         : '1.0.0',
     roundedimageview: '2.3.0',
     cardstackview   : '2.3.2',
