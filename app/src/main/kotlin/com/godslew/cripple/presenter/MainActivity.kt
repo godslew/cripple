@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
+import com.godslew.account.AccountActivity
 import com.godslew.core.android.action.AppAction
 import com.godslew.core.android.extensions.bindTo
 import com.godslew.core.android.factory.ViewModelFactory
@@ -58,6 +59,7 @@ class MainActivity : BaseActivity() {
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
     when (item.itemId) {
       R.id.menu_account -> {
+        startActivity(AccountActivity.createIntent(this))
       }
       R.id.menu_setting -> {
 

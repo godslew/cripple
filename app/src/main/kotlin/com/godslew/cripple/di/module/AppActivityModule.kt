@@ -1,5 +1,6 @@
 package com.godslew.cripple.di.module
 
+import com.godslew.account.AccountActivity
 import com.godslew.cripple.presenter.MainActivity
 import com.godslew.image.detail.ImageDetailActivity
 import com.godslew.oauth.TwitterLoginActivity
@@ -16,8 +17,11 @@ abstract class AppActivityModule {
   abstract fun contributeTwitterLoginActivity(): TwitterLoginActivity
 
   @ContributesAndroidInjector
-  abstract fun contributeTimelineCreatorctivity(): TimelineCreatorActivity
+  abstract fun contributeTimelineCreatorActivity(): TimelineCreatorActivity
 
   @ContributesAndroidInjector
   abstract fun contributeImageDetailActivity(): ImageDetailActivity
+
+  @ContributesAndroidInjector
+  abstract fun contributeAccountActivity(): AccountActivity
 }
