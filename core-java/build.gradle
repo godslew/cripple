@@ -4,6 +4,7 @@ apply plugin: 'kotlin'
 dependencies {
     // Kotlin
     api libs.kotlin.stdlib
+    api libs.kotlin.coroutines
 
     // twitter
     api libs.twitter4j.core

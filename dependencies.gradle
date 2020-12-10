@@ -7,7 +7,10 @@ ext.versions = [
   // gradle
   gradle        : '4.1.1',
 
-  kotlin        : '1.4.0',
+  kotlin        : [
+    core                 :'1.4.21',
+    coroutines           : '1.4.2'
+  ],
 
   androidx      : [
     corektx              : '1.1.0',
@@ -15,7 +18,7 @@ ext.versions = [
     appcompat            : '1.1.0',
     constraintlayout     : '1.1.3',
     percentlayout        : '1.0.0',
-    lifecycle            : '2.1.0',
+    lifecycle            : '2.2.0',
     cardview             : '1.0.0',
     lifecycleviewmodelktx: '2.1.0',
     lifecycleextensions  : '2.1.0',
@@ -106,9 +109,10 @@ ext.libs = [
     ]
   ],
   kotlin     : [
-    stdlib : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
-    plugin : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
-    allopen: "org.jetbrains.kotlin:kotlin-allopen:${versions.kotlin}"
+    stdlib : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin.core}",
+    plugin : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin.core}",
+    allopen: "org.jetbrains.kotlin:kotlin-allopen:${versions.kotlin.corre}",
+    coroutines: "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlin.coroutines}"
   ],
 
   androidx   : [
@@ -120,7 +124,8 @@ ext.libs = [
     lifecycle       : [
       extensions  : "androidx.lifecycle:lifecycle-extensions:${versions.androidx.lifecycle}",
       compiler    : "androidx.lifecycle:lifecycle-compiler:${versions.androidx.lifecycle}",
-      viewmodelktx: "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.androidx.lifecycle}"
+      viewmodelktx: "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.androidx.lifecycle}",
+      livedata    : "androidx.lifecycle:lifecycle-livedata-ktx:${versions.androidx.lifecycle}"
     ],
     cardview        : "androidx.cardview:cardview:${versions.androidx.cardview}",
     navigation      : [

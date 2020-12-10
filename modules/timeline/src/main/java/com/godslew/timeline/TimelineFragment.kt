@@ -12,6 +12,7 @@ import com.godslew.core.android.presenter.BaseFragment
 import com.godslew.timeline.databinding.TimelineFragmentBinding
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
+import timber.log.Timber
 import javax.inject.Inject
 
 
@@ -29,7 +30,7 @@ class TimelineFragment : BaseFragment() {
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?
-  ): View? {
+  ): View {
     binding = TimelineFragmentBinding.inflate(inflater, container, false)
     return binding.root
   }

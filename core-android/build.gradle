@@ -36,6 +36,8 @@ dependencies {
   api libs.dagger.android.core
   api libs.dagger.android.support
 
+  api libs.androidx.lifecycle.livedata
+
   // redux
   api libs.rxredux
 
